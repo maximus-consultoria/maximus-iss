@@ -321,7 +321,7 @@
     <div class="senha-hint">Clique na senha ou no botão para copiar automaticamente</div>
   </div>
 
-  <a href="https://quita-divida.github.io/app.html" target="_blank" class="btn-acessar">
+  <a id="btn-acessar-link" href="app.html" class="btn-acessar">
     <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="20" height="20">
       <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
     </svg>
@@ -365,24 +365,19 @@ let senhaGlobal = '';
 
 (function() {
   function gerarSenhaUnica() {
-    // Pega o timestamp atual em milissegundos
-    const timestamp = Date.now();
+    // Gera exatamente 6 caracteres garantidos: apenas A-Z e 0-9
+    // Compatível com o validador do app.html
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     
-    // Converte para base 36 (usa 0-9 e A-Z)
-    // Ex: 1714155322847 → "l3x9m2k7p4"
-    const codigoTempo = timestamp.toString(36);
+    function bloco6() {
+      let s = '';
+      for (let i = 0; i < 6; i++) {
+        s += CHARS[Math.floor(Math.random() * CHARS.length)];
+      }
+      return s;
+    }
     
-    // Pega os últimos 6 caracteres
-    const parteTempo = codigoTempo.slice(-6).toUpperCase();
-    
-    // Gera 6 caracteres aleatórios (2 bilhões de combinações)
-    // Math.random() → 0.847291...
-    // toString(36) → "0.pq7xk9..."
-    // substring(2, 8) → "pq7xk9"
-    const aleatorio = Math.random().toString(36).substring(2, 8).toUpperCase();
-    
-    // Monta a senha final: QUITA-XXXXXX-XXXXXX
-    return `QUITA-${parteTempo}-${aleatorio}`;
+    return `QUITA-${bloco6()}-${bloco6()}`;
   }
 
   // Gera a senha única quando a página carrega
@@ -390,6 +385,10 @@ let senhaGlobal = '';
   
   // Exibe na tela
   document.getElementById('senha-txt').textContent = senhaGlobal;
+
+  // Atualiza link do botão para incluir a senha na URL — auto-login no app.html
+  const btnLink = document.getElementById('btn-acessar-link');
+  if (btnLink) btnLink.href = 'app.html?s=' + encodeURIComponent(senhaGlobal);
   
   console.log('✅ Senha única gerada:', senhaGlobal);
 })();

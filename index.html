@@ -1117,15 +1117,12 @@ window.addEventListener('load', function(){});
 
 <script>
 function abrirApp(nivel){
-  if(!_checkSession(nivel)) { console.warn('Acesso negado.'); return; }
   const app=document.getElementById('app-aluno');
   app.style.display='block';
   app.innerHTML=gerarNivel(3);
   app.scrollTo(0,0);
-  // Hide landing nav so it doesn't overlap the app topbar
   const landingNav=document.querySelector('body > nav');
   if(landingNav) landingNav.style.display='none';
-  // init always as N3
   initN3();
 }
 
@@ -1144,7 +1141,6 @@ document.head.appendChild(shakeStyle);
 // ══════════════════════════════════════════
 
 function gerarNivel(nivel){
-  if(!_checkSession(nivel)) { return '<div style="color:#fb7185;padding:40px;text-align:center">Sessão inválida. <a href="javascript:logout()" style="color:#00e87a">Voltar</a></div>'; }
   const appCSS = `
 <style>
 :root{
@@ -2201,6 +2197,10 @@ Me dê:
 3. Os argumentos legais que posso usar a meu favor
 4. O que fazer se o atendente disser não`;
   cpTxt(txt,'btn-demo-cp');
+}
+
+function logout(){
+  window.location.reload();
 }
 
 // ── MOBILE MENU ──

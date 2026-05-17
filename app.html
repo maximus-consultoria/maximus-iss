@@ -114,68 +114,9 @@ html, body {
   overflow: hidden;
 }
 </style>
-</head>
-<body>
 
-<!-- ══ TELA DE SENHA ══ -->
-<div id="tela-senha" style="position:fixed;inset:0;z-index:9999;background:#09090a;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;">
-  <div style="width:100%;max-width:420px;padding:24px;">
-    <div style="text-align:center;margin-bottom:36px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:6px;color:#00C853;text-shadow:0 0 40px rgba(0,200,83,0.4);line-height:1;">QUITA</div>
-      <div style="font-size:11px;color:#4f4f5a;letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Área de Membros</div>
-    </div>
-    <div style="background:#111112;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:36px;">
-      <div style="margin-bottom:22px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4f4f5a;margin-bottom:6px;">Acesso exclusivo</div>
-        <div style="font-size:18px;font-weight:800;color:#ebebeb;line-height:1.3;">Digite sua senha de acesso</div>
-        <div style="font-size:13px;color:#9a9aa3;margin-top:6px;">Recebida por e-mail após a compra.</div>
-      </div>
-      <div style="position:relative;margin-bottom:16px;">
-        <input id="senha-input" type="password" placeholder="Sua senha de acesso" autocomplete="off"
-          onkeydown="if(event.key==='Enter')verificarSenha()"
-          onfocus="this.style.borderColor='rgba(0,200,83,0.5)'"
-          onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
-          style="width:100%;padding:16px 50px 16px 18px;background:#1f1f22;border:1px solid rgba(255,255,255,0.08);color:#ebebeb;border-radius:12px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;outline:none;letter-spacing:2px;transition:border-color .2s;">
-        <button onclick="toggleSenhaVis()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:#4f4f5a;cursor:pointer;padding:4px;">
-          <svg id="eye-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        </button>
-      </div>
-      <div id="senha-erro" style="display:none;background:rgba(251,113,133,0.1);border:1px solid rgba(251,113,133,0.2);border-radius:8px;padding:10px 14px;font-size:13px;color:#fb7185;margin-bottom:16px;">
-        ❌ Senha incorreta. Verifique o e-mail recebido após a compra.
-      </div>
-      <button onclick="verificarSenha()" style="width:100%;padding:16px;background:#00C853;color:#000;border:none;border-radius:100px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;cursor:pointer;transition:all .2s;letter-spacing:.5px;"
-        onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 8px 30px rgba(0,200,83,0.35)'"
-        onmouseout="this.style.transform='';this.style.boxShadow=''">
-        Acessar meu conteúdo →
-      </button>
-      <div style="text-align:center;margin-top:18px;font-size:12px;color:#4f4f5a;">
-        Problemas? <a href="mailto:maximus.consultoria.trib@gmail.com" style="color:#00C853;text-decoration:none;font-weight:700;">maximus.consultoria.trib@gmail.com</a>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:20px;font-size:11px;color:#2a2a2e;">© 2026 QUITA · Conteúdo exclusivo para alunos</div>
-  </div>
-</div>
+<style id="app-main-css">
 
-<!-- App -->
-<div id="app-aluno" style="display:none;position:fixed;inset:0;"></div>
-
-<script>
-function abrirApp(nivel){
-  const app=document.getElementById('app-aluno');
-  app.style.display='block';
-  app.innerHTML=gerarNivel(3);
-  app.scrollTo(0,0);
-  initN3();
-}
-
-// ══════════════════════════════════════════
-// gerarNivel — retorna o HTML completo do app
-// ══════════════════════════════════════════
-
-function gerarNivel(nivel){
-  // acesso direto
-  const appCSS = `
-<style>
 :root{
   --bg:#09090a;--bg2:#111112;--bg3:#18181a;--bg4:#1f1f22;--bg5:#28282c;
   --border:rgba(255,255,255,0.055);--border2:rgba(255,255,255,0.10);
@@ -189,7 +130,7 @@ function gerarNivel(nivel){
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-#app-aluno{font-family:var(--font-b);font-size:15px;line-height:1.6;display:flex;width:100%;height:100%}
+#app-aluno{font-family:var(--font-b);font-size:16px;line-height:1.6;display:flex;width:100%;height:100%}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .a1{animation:fadeUp .45s ease both}.a2{animation:fadeUp .45s .08s ease both}.a3{animation:fadeUp .45s .14s ease both}.a4{animation:fadeUp .45s .2s ease both}
 /* SIDEBAR */
@@ -205,10 +146,14 @@ html{scroll-behavior:smooth}
 .asb-chip-bdg{font-size:10px;font-weight:800;padding:2px 8px;border-radius:4px;font-family:var(--font-d)}
 .asb-nav{padding:20px 12px;flex:1}
 .asb-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);padding:0 10px;margin-bottom:6px}
-.asb-a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;transition:all .15s;margin-bottom:1px;color:var(--text2);font-size:13.5px;text-decoration:none}
+.asb-a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;transition:all .18s;margin-bottom:2px;color:var(--text2);font-size:13px;text-decoration:none;font-weight:500}
 .asb-a:hover{background:var(--bg3);color:var(--text)}
-.asb-a svg{width:15px;height:15px;flex-shrink:0;opacity:.5}
+.asb-a svg{width:15px;height:15px;flex-shrink:0;opacity:.5;transition:opacity .18s}
 .asb-a:hover svg{opacity:1}
+.asb-a.active{color:var(--text)!important;font-weight:600}
+.asb-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:transform .18s}
+.asb-a:hover .asb-ico{transform:scale(1.08)}
+.asb-badge{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:.5px}
 .asb-sep{height:1px;background:var(--border);margin:14px 10px}
 .asb-foot{padding:16px 20px;border-top:1px solid var(--border)}
 .asb-user{display:flex;align-items:center;gap:10px}
@@ -221,7 +166,7 @@ html{scroll-behavior:smooth}
 .amain{margin-left:264px;flex:1;display:flex;flex-direction:column;height:100vh;overflow-y:auto;padding-top:0}
 .atb{height:58px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 32px;gap:14px;background:rgba(9,9,10,0.97);flex-shrink:0;position:sticky;top:0;z-index:150}
 /* TOPBAR */
-.atb-title{font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--text)}
+.atb-title{font-family:var(--font-d);font-size:15px;font-weight:600;color:var(--text)}
 .atb-sep{width:1px;height:14px;background:var(--border2)}
 .atb-sub{font-size:12px;color:var(--text3)}
 .atb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
@@ -235,7 +180,7 @@ html{scroll-behavior:smooth}
 .ahero-eye{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
 .ahero-dot{width:5px;height:5px;border-radius:50%}
 .ahero-h1{font-family:var(--font-d);font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px;color:var(--text)}
-.ahero-p{font-size:14px;color:var(--text2);max-width:560px;line-height:1.75}
+.ahero-p{font-size:16px;color:var(--text2);max-width:560px;line-height:1.75}
 /* STATS */
 .astats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:36px}
 .astat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;transition:border-color .2s}
@@ -269,25 +214,25 @@ html{scroll-behavior:smooth}
 .asteps{padding:20px 24px;display:flex;flex-direction:column;gap:12px}
 .astep{display:flex;align-items:flex-start;gap:12px}
 .astep-n{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-.astep-t{font-size:13px;color:var(--text2);line-height:1.6}
+.astep-t{font-size:15px;color:var(--text2);line-height:1.6}
 /* PROMPT LIST */
 .apl{padding:6px 0}
 .api{border-bottom:1px solid rgba(255,255,255,0.06);transition:all .15s;margin:0 8px;border-radius:0}
 .api:last-child{border-bottom:none}
 .api:hover{background:rgba(255,255,255,0.04);border-radius:10px;margin:2px 8px}
 .api-h{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
-.api-num{width:32px;height:22px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;font-family:var(--font-d);flex-shrink:0}
-.api-title{font-size:14px;font-weight:600;color:#fff;flex:1}
+.api-num{width:32px;height:22px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;font-family:var(--font-d);flex-shrink:0}
+.api-title{font-size:16px;font-weight:600;color:#fff;flex:1}
 .api-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:5px}
 .api-chev{width:15px;height:15px;color:var(--text2);transition:transform .2s;flex-shrink:0}
 .api.open .api-chev{transform:rotate(180deg)}
 .api-body{display:none;padding:4px 16px 20px}
 .api.open .api-body{display:block}
-.api-desc{font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.6}
-.api-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:18px;font-family:monospace;font-size:12.5px;color:#d4e0d4;line-height:1.9;white-space:pre-wrap;word-break:break-word;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04)}
+.api-desc{font-size:14px;color:var(--text3);margin-bottom:10px;line-height:1.6}
+.api-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:18px;font-family:monospace;font-size:14.5px;color:#d4e0d4;line-height:1.9;white-space:pre-wrap;word-break:break-word;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04)}
 .api-box .ph{font-style:italic;font-weight:700}
 /* COPY BTN */
-.acpbtn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:9px 18px;background:var(--c3);color:#000;border:none;border-radius:100px;font-size:12px;font-weight:800;cursor:pointer;transition:all .2s;font-family:var(--font-b);box-shadow:0 2px 12px rgba(245,166,35,0.3)}
+.acpbtn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:9px 18px;background:var(--c3);color:#000;border:none;border-radius:100px;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;font-family:var(--font-b);box-shadow:0 2px 12px rgba(245,166,35,0.3)}
 .acpbtn:hover{filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,166,35,0.4)}
 .acpbtn.ok{background:#4ade80;box-shadow:0 2px 12px rgba(74,222,128,0.3);color:#000}
 .acpbtn svg{width:13px;height:13px}
@@ -295,12 +240,12 @@ html{scroll-behavior:smooth}
 .aintro{background:linear-gradient(135deg,rgba(245,166,35,0.06),rgba(245,166,35,0.02));border:1px solid rgba(245,166,35,0.25);border-radius:var(--rl);padding:24px 26px;margin-bottom:22px;position:relative;overflow:hidden}
 .aintro::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(245,166,35,0.6),transparent)}
 .aintro-eye{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
-.aintro-title{font-family:var(--font-d);font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
-.aintro-desc{font-size:13px;color:var(--text2);line-height:1.75;max-width:600px}
+.aintro-title{font-family:var(--font-d);font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.aintro-desc{font-size:15px;color:var(--text2);line-height:1.75;max-width:600px}
 /* INFO TABLE */
 .aitbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--rl);margin:10px 0}
 table.aitbl{width:100%;border-collapse:collapse;font-size:12.5px}
-table.aitbl th{background:var(--bg3);color:var(--text3);font-weight:500;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:11px}
+table.aitbl th{background:var(--bg3);color:var(--text3);font-weight:500;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
 table.aitbl td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);line-height:1.5;vertical-align:top}
 table.aitbl tr:last-child td{border-bottom:none}
 table.aitbl tr:hover td{background:var(--bg3)}
@@ -313,16 +258,16 @@ table.aitbl tr:hover td{background:var(--bg3)}
 .acc-card{background:var(--bg3);border-radius:var(--r);padding:14px 16px}
 .acc-lbl{font-size:11px;color:var(--text3);margin-bottom:6px}
 .acc-val{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--text)}
-.acc-inp{width:100%;margin-top:6px;font-size:13px;padding:6px 10px;background:var(--bg4);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:var(--font-b);outline:none}
+.acc-inp{width:100%;margin-top:6px;font-size:15px;padding:6px 10px;background:var(--bg4);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:var(--font-b);outline:none}
 /* ETAPAS */
 .aetapas{display:flex;flex-direction:column;gap:0;margin:10px 0}
 .aetapa{display:flex;gap:16px;padding:12px 0;position:relative}
 .aetapa:not(:last-child)::after{content:'';position:absolute;left:15px;top:40px;bottom:0;width:1px;background:var(--border)}
 .aetapa-n{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--font-d);flex-shrink:0;z-index:1}
-.aetapa-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
-.aetapa-desc{font-size:12px;color:var(--text3);line-height:1.6}
+.aetapa-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px}
+.aetapa-desc{font-size:14px;color:var(--text3);line-height:1.6}
 /* SCRIPT BOX */
-.ascript-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:20px;font-size:13px;color:#d4e0d4;line-height:1.9;white-space:pre-wrap;word-break:break-word;margin-bottom:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04)}
+.ascript-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:20px;font-size:15px;color:#d4e0d4;line-height:1.9;white-space:pre-wrap;word-break:break-word;margin-bottom:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04)}
 .ascript-box b{color:#fff;font-weight:700}
 .sc-obj{color:#fbbf24;font-style:italic}
 .sc-resp{color:#86efac}
@@ -332,25 +277,25 @@ table.aitbl tr:hover td{background:var(--bg3)}
 .amsg-card:hover{border-color:rgba(255,255,255,0.22);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.4)}
 .amsg-h{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;user-select:none;border-bottom:1px solid rgba(255,255,255,0.08);background:var(--bg3)}
 .amsg-ico{font-size:16px}
-.amsg-title{font-size:13px;font-weight:700;color:#fff;flex:1}
+.amsg-title{font-size:15px;font-weight:700;color:#fff;flex:1}
 .amsg-chev{width:14px;height:14px;color:var(--text2);transition:transform .2s;flex-shrink:0}
 .amsg-card.open .amsg-chev{transform:rotate(180deg)}
 .amsg-body{display:none;padding:14px 18px}
 .amsg-card.open .amsg-body{display:block}
-.amsg-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:14px;font-size:12px;color:#d4e0d4;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
+.amsg-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:14px;font-size:14px;color:#d4e0d4;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
 /* PLANILHA */
 .aplan-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .aps{background:var(--bg3);border-radius:var(--r);padding:12px 14px}
-.aps-l{font-size:11px;color:var(--text3);margin-bottom:4px}
+.aps-l{font-size:13px;color:var(--text3);margin-bottom:4px}
 .aps-v{font-family:var(--font-d);font-size:18px;font-weight:700;color:var(--text)}
 .aptbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--rl);background:var(--bg2)}
-table.aptbl{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
-table.aptbl th{background:var(--bg3);color:var(--text3);font-weight:500;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:11px}
+table.aptbl{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+table.aptbl th{background:var(--bg3);color:var(--text3);font-weight:500;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
 table.aptbl td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle}
 table.aptbl tr:last-child td{border-bottom:none}
 table.aptbl tr:hover td{background:var(--bg3)}
 table.aptbl input,table.aptbl select{width:100%;font-size:11px;padding:4px 6px;background:var(--bg4);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--font-b);outline:none}
-.aaddbtn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s;font-family:var(--font-b)}
+.aaddbtn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s;font-family:var(--font-b)}
 .aaddbtn:hover{background:var(--bg4);color:var(--text)}
 .adelbtn{background:none;border:1px solid var(--border);border-radius:5px;color:var(--text3);font-size:10px;padding:2px 7px;cursor:pointer;font-family:var(--font-b)}
 .adelbtn:hover{border-color:var(--rose);color:var(--rose)}
@@ -361,34 +306,34 @@ table.aptbl input,table.aptbl select{width:100%;font-size:11px;padding:4px 6px;b
 .amod-chip.active{background:var(--c3b)}
 .amod-num{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1px;margin-bottom:8px;font-family:var(--font-d)}
 .amod-ico{font-size:20px;margin-bottom:8px}
-.amod-title{font-size:12px;font-weight:600;color:var(--text);line-height:1.4}
+.amod-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
 .amod-sub{font-size:11px;color:var(--text3);margin-top:3px}
 .amod-cnt{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;background:var(--c3b);border-radius:4px;padding:2px 7px}
 .amod-panel{display:none}.amod-panel.active{display:block}
 /* CDC CARDS */
 .acdc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
 .acdc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px}
-.acdc-art{font-family:var(--font-d);font-size:13px;font-weight:700;margin-bottom:4px}
-.acdc-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px}
+.acdc-art{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:4px}
+.acdc-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
 .acdc-desc{font-size:11.5px;color:var(--text3);line-height:1.6;margin-bottom:8px}
-.acdc-uso{font-size:11px;color:var(--teal);background:rgba(45,212,191,.08);border-radius:6px;padding:5px 8px;line-height:1.5}
+.acdc-uso{font-size:13px;color:var(--teal);background:rgba(45,212,191,.08);border-radius:6px;padding:5px 8px;line-height:1.5}
 /* PRAZOS */
 .aprazos{display:flex;flex-direction:column;gap:8px;margin:10px 0}
 .aprazo{display:flex;align-items:center;gap:12px;background:var(--bg3);border-radius:var(--r);padding:10px 14px}
-.apz-tipo{font-size:12px;font-weight:500;color:var(--text);width:220px;flex-shrink:0}
+.apz-tipo{font-size:14px;font-weight:500;color:var(--text);width:220px;flex-shrink:0}
 .apz-bar{flex:1;height:5px;background:var(--bg5);border-radius:3px;overflow:hidden}
 .apz-fill{height:100%;border-radius:3px}
-.apz-prazo{font-size:12px;font-weight:600;font-family:var(--font-d);width:64px;text-align:right;flex-shrink:0}
+.apz-prazo{font-size:14px;font-weight:600;font-family:var(--font-d);width:64px;text-align:right;flex-shrink:0}
 /* SCORE PLAN */
 .ascore-plan{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
 .asp-card{background:var(--bg3);border-radius:var(--rl);padding:14px;border:1px solid var(--border)}
 .asp-fase{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
-.asp-per{font-family:var(--font-d);font-size:13px;font-weight:700;margin-bottom:8px}
+.asp-per{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:8px}
 .asp-ul{list-style:none}
 .asp-ul li{font-size:11.5px;color:var(--text2);padding:3px 0;border-bottom:1px solid var(--border);line-height:1.5}
 .asp-ul li:last-child{border-bottom:none}
 .asp-ul li::before{content:'→ '}
-.asp-res{margin-top:8px;font-size:11px;font-weight:600;background:var(--green-bg);color:var(--green);border-radius:6px;padding:5px 8px;text-align:center}
+.asp-res{margin-top:8px;font-size:13px;font-weight:600;background:var(--green-bg);color:var(--green);border-radius:6px;padding:5px 8px;text-align:center}
 /* BUDGET */
 .abudget{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
 .abud-in{background:var(--bg3);border-radius:var(--rl);padding:18px}
@@ -397,8 +342,8 @@ table.aptbl input,table.aptbl select{width:100%;font-size:11px;padding:4px 6px;b
 .abud-res{background:var(--bg3);border-radius:var(--rl);padding:18px}
 .abud-item{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)}
 .abud-item:last-child{border-bottom:none}
-.abud-cat{font-size:13px;color:var(--text2)}
-.abud-val{font-family:var(--font-d);font-size:13px;font-weight:700}
+.abud-cat{font-size:15px;color:var(--text2)}
+.abud-val{font-family:var(--font-d);font-size:15px;font-weight:700}
 .abud-bar{width:100%;height:3px;background:var(--bg5);border-radius:2px;margin-top:3px;overflow:hidden}
 .abud-fill{height:100%;border-radius:2px}
 /* CRED TABLE */
@@ -406,8 +351,345 @@ table.aptbl input,table.aptbl select{width:100%;font-size:11px;padding:4px 6px;b
 .acred-item{display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;transition:border-color .2s}
 .acred-item:hover{border-color:var(--border2)}
 .acred-ico{font-size:18px;width:28px;flex-shrink:0}
-.acred-name{font-size:13px;font-weight:500;color:var(--text)}
-.acred-desc{font-size:11px;color:var(--text3);margin-top:2px}
+.acred-name{font-size:15px;font-weight:500;color:var(--text)}
+.acred-desc{font-size:13px;color:var(--text3);margin-top:2px}
+.acred-bdg{font-size:10px;font-weight:600;padding:2px 9px;border-radius:5px}
+.bdg-e{background:var(--green-bg);color:var(--green)}
+.bdg-m{background:rgba(251,191,36,.12);color:#fbbf24}
+.bdg-h{background:rgba(251,113,133,.12);color:#fb7185}
+/* UPGRADE */
+.aupgrade{background:linear-gradient(135deg,var(--bg2),rgba(0,0,0,0.2));border-radius:22px;padding:28px 30px;margin-top:36px;display:flex;align-items:center;gap:22px}
+.aup-ico{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.aup-title{font-family:var(--font-d);font-size:17px;font-weight:700;color:var(--text);margin-bottom:5px}
+.aup-desc{font-size:13px;color:var(--text2);line-height:1.65;max-width:440px}
+.aup-cta{display:inline-flex;align-items:center;gap:8px;color:#000;font-weight:700;font-size:13px;padding:11px 22px;border-radius:100px;text-decoration:none;transition:all .2s;white-space:nowrap;font-family:var(--font-d)}
+.aup-cta:hover{transform:translateY(-1px);filter:brightness(1.1)}
+
+
+/* ── UPGRADE BANNER ── */
+.upg-banner{background:linear-gradient(135deg,var(--bg2) 0%,rgba(0,0,0,0.3) 100%);border-radius:var(--rxl);padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.upg-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.upg-n1::before{background:linear-gradient(90deg,#00e87a,#00c464)}
+.upg-n2::before{background:linear-gradient(90deg,#7c6dfa,#9d91fb)}
+.upg-banner-inner{display:flex;align-items:center;gap:20px}
+.upg-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.upg-body{flex:1}
+.upg-eyebrow{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.upg-title{font-family:var(--font-d);font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.upg-desc{font-size:12px;color:var(--text2);line-height:1.6;max-width:400px}
+.upg-price-block{text-align:right;flex-shrink:0}
+.upg-price-old{font-size:12px;color:var(--text3);text-decoration:line-through;margin-bottom:2px}
+.upg-price-new{font-family:var(--font-d);font-size:28px;font-weight:800;line-height:1}
+.upg-price-label{font-size:10px;color:var(--text3);margin-top:2px}
+.upg-badge-desc{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:8px}
+.upg-cta{display:inline-flex;align-items:center;gap:6px;color:#000;font-weight:800;font-size:13px;padding:11px 22px;border-radius:100px;text-decoration:none;transition:all .2s;white-space:nowrap;font-family:var(--font-d);margin-top:8px}
+.upg-cta:hover{transform:translateY(-1px);filter:brightness(1.1);box-shadow:0 6px 20px rgba(0,0,0,0.3)}
+.upg-timer{font-size:11px;color:var(--text3);margin-top:6px;text-align:center}
+
+/* MINI PROGRESS */
+.atb-minibar{width:50px;height:3px;background:var(--bg5);border-radius:2px;overflow:hidden}
+.atb-minifill{height:100%;border-radius:2px;width:0%;transition:width .8s}
+
+
+.mob-menu-btn{display:none;align-items:center;justify-content:center;background:none;border:none;color:var(--text2);cursor:pointer;padding:4px;border-radius:6px}
+.mob-nav-close{display:none;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" style="position:fixed;inset:0;z-index:9999;background:#09090a;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">
+  <div style="width:100%;max-width:420px;padding:24px 20px;">
+    <!-- Logo -->
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#f5a623,#fbbf4a);box-shadow:0 0 30px rgba(245,166,35,0.4);font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#000;margin-bottom:14px;">Q</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#ebebeb;letter-spacing:.5px;">QUITA</div>
+      <div style="font-size:13px;color:#4f4f5a;margin-top:4px;">Área de Membros</div>
+    </div>
+    <!-- Card -->
+    <div style="background:#111112;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:32px 28px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+      <div style="font-size:14px;font-weight:600;color:#ebebeb;margin-bottom:6px;">Digite sua senha de acesso</div>
+      <div style="font-size:12px;color:#4f4f5a;margin-bottom:20px;">Formato: QUITA-XXXXXX-XXXXXX</div>
+      <input id="login-input" type="text" placeholder="QUITA-XXXXXX-XXXXXX"
+        style="width:100%;padding:14px 16px;background:#18181a;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#ebebeb;font-family:'DM Sans',sans-serif;font-size:15px;letter-spacing:1px;outline:none;transition:border-color .2s;margin-bottom:8px;text-transform:uppercase;"
+        onfocus="this.style.borderColor='rgba(245,166,35,0.5)'"
+        onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+        oninput="this.value=this.value.toUpperCase()"
+        onkeydown="if(event.key==='Enter')tentarLogin()">
+      <div id="login-erro" style="font-size:12px;color:#fb7185;min-height:18px;margin-bottom:14px;display:none;">Senha incorreta. Verifique e tente novamente.</div>
+      <button onclick="tentarLogin()"
+        style="width:100%;padding:14px;background:linear-gradient(135deg,#f5a623,#fbbf4a);color:#000;font-family:'DM Sans',sans-serif;font-weight:800;font-size:15px;border:none;border-radius:10px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(245,166,35,0.3);"
+        onmouseover="this.style.filter='brightness(1.1)';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.filter='';this.style.transform=''">
+        Acessar o Método →
+      </button>
+      <div style="text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+        <div style="font-size:12px;color:#4f4f5a;margin-bottom:8px;">Ainda não tem acesso?</div>
+        <a href="index.html" style="font-size:13px;font-weight:700;color:#f5a623;text-decoration:none;">Comprar agora — R$ 9,90 →</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px;font-size:11px;color:#3f3f46;">
+      Dúvidas? <a href="mailto:maximus.consultoria.trib@gmail.com" style="color:#4f4f5a;text-decoration:none;">maximus.consultoria.trib@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app-aluno" style="display:none;position:fixed;inset:0;"></div>
+
+<script>
+function abrirApp(nivel){
+  const app=document.getElementById('app-aluno');
+  app.style.display='flex';
+  app.innerHTML=gerarNivel(3);
+  app.scrollTo(0,0);
+  initN3();
+}
+
+// ══════════════════════════════════════════
+// gerarNivel — retorna o HTML completo do app
+// ══════════════════════════════════════════
+
+function gerarNivel(nivel){
+  // acesso direto
+  const appCSS = `
+<style>
+:root{
+  --bg:#09090a;--bg2:#111112;--bg3:#18181a;--bg4:#1f1f22;--bg5:#28282c;
+  --border:rgba(255,255,255,0.055);--border2:rgba(255,255,255,0.10);
+  /* N1 */--c1:#00e87a;--c1b:rgba(0,232,122,0.09);--c1b2:rgba(0,232,122,0.15);
+  /* N2 */--c2:#7c6dfa;--c2b:rgba(124,109,250,0.09);--c2b2:rgba(124,109,250,0.15);
+  /* N3 */--c3:#f5a623;--c3b:rgba(245,166,35,0.09);--c3b2:rgba(245,166,35,0.15);
+  --teal:#2dd4bf;--rose:#fb7185;--green:#4ade80;--amber:#fbbf24;
+  --text:#ebebeb;--text2:#9a9aa3;--text3:#4f4f5a;
+  --font-d:'Syne',sans-serif;--font-b:'DM Sans',sans-serif;
+  --r:10px;--rl:16px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+#app-aluno{font-family:var(--font-b);font-size:16px;line-height:1.6;display:flex;width:100%;height:100%}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.a1{animation:fadeUp .45s ease both}.a2{animation:fadeUp .45s .08s ease both}.a3{animation:fadeUp .45s .14s ease both}.a4{animation:fadeUp .45s .2s ease both}
+/* SIDEBAR */
+.asb{width:264px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:200;overflow-y:auto}
+.asb-top{padding:24px 20px;border-bottom:1px solid var(--border)}
+.asb-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.asb-mark{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:800;font-size:14px;color:#000}
+.asb-name{font-family:var(--font-d);font-weight:700;font-size:18px;letter-spacing:.5px;color:var(--text)}
+.asb-chip{display:flex;align-items:center;gap:8px;border-radius:8px;padding:8px 12px;border:1px solid}
+.asb-chip-dot{width:6px;height:6px;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.asb-chip-txt{font-size:12px;font-weight:600;letter-spacing:.3px;flex:1}
+.asb-chip-bdg{font-size:10px;font-weight:800;padding:2px 8px;border-radius:4px;font-family:var(--font-d)}
+.asb-nav{padding:20px 12px;flex:1}
+.asb-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);padding:0 10px;margin-bottom:6px}
+.asb-a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;transition:all .18s;margin-bottom:2px;color:var(--text2);font-size:13px;text-decoration:none;font-weight:500}
+.asb-a:hover{background:var(--bg3);color:var(--text)}
+.asb-a svg{width:15px;height:15px;flex-shrink:0;opacity:.5;transition:opacity .18s}
+.asb-a:hover svg{opacity:1}
+.asb-a.active{color:var(--text)!important;font-weight:600}
+.asb-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:transform .18s}
+.asb-a:hover .asb-ico{transform:scale(1.08)}
+.asb-badge{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:.5px}
+.asb-sep{height:1px;background:var(--border);margin:14px 10px}
+.asb-foot{padding:16px 20px;border-top:1px solid var(--border)}
+.asb-user{display:flex;align-items:center;gap:10px}
+.asb-av{width:30px;height:30px;background:var(--bg4);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--text2)}
+.asb-uname{font-size:12px;font-weight:500;color:var(--text)}
+.asb-ulvl{font-size:11px;color:var(--text3)}
+.asb-exit{margin-left:auto;background:none;border:none;color:var(--text3);cursor:pointer;transition:color .15s;padding:4px;font-family:var(--font-b)}
+.asb-exit:hover{color:var(--rose)}
+/* MAIN */
+.amain{margin-left:264px;flex:1;display:flex;flex-direction:column;height:100vh;overflow-y:auto;padding-top:0}
+.atb{height:58px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 32px;gap:14px;background:rgba(9,9,10,0.97);flex-shrink:0;position:sticky;top:0;z-index:150}
+/* TOPBAR */
+.atb-title{font-family:var(--font-d);font-size:15px;font-weight:600;color:var(--text)}
+.atb-sep{width:1px;height:14px;background:var(--border2)}
+.atb-sub{font-size:12px;color:var(--text3)}
+.atb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.atb-pill{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--text2)}
+.atb-dot{width:5px;height:5px;border-radius:50%;animation:glow 2s infinite}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8)}}
+/* CONTENT */
+.acont{padding:40px 32px 80px;max-width:920px;width:100%}
+/* HERO */
+.ahero{margin-bottom:36px}
+.ahero-eye{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.ahero-dot{width:5px;height:5px;border-radius:50%}
+.ahero-h1{font-family:var(--font-d);font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px;color:var(--text)}
+.ahero-p{font-size:16px;color:var(--text2);max-width:560px;line-height:1.75}
+/* STATS */
+.astats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:36px}
+.astat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;transition:border-color .2s}
+.astat:hover{border-color:var(--border2)}
+.astat-l{font-size:10px;font-weight:500;color:var(--text3);letter-spacing:.5px;margin-bottom:5px}
+.astat-v{font-family:var(--font-d);font-size:24px;font-weight:700;color:var(--text)}
+/* TABS NAV */
+.atabs{display:flex;gap:4px;margin-bottom:28px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:4px}
+.atab-btn{flex:1;padding:9px 8px;border-radius:10px;border:none;background:none;color:var(--text2);font-size:12px;font-weight:500;font-family:var(--font-b);cursor:pointer;transition:all .15s;text-align:center}
+.atab-btn:hover{color:var(--text);background:var(--bg3)}
+.atab-btn.active{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
+.atab-panel{display:none}.atab-panel.active{display:block}
+/* SEC HEAD */
+.asec{display:flex;align-items:center;gap:12px;margin-bottom:16px;margin-top:28px}
+.asec-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
+.asec-line{flex:1;height:1px;background:var(--border)}
+/* GUIDE CARD */
+.agcard{background:var(--bg2);border:1px solid rgba(255,255,255,0.12);border-radius:var(--rl);overflow:hidden;margin-bottom:12px;transition:all .2s;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+.agcard:hover{border-color:rgba(255,255,255,0.22);box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.agcard-h{display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;user-select:none;background:var(--bg3)}
+.agcard-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.agcard-info{flex:1}
+.agcard-title{font-size:14px;font-weight:700;color:#fff}
+.agcard-sub{font-size:12px;color:var(--text2);margin-top:2px}
+.agcard-cnt{font-size:10px;font-weight:700;color:var(--text2);background:var(--bg5);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:3px 10px}
+.agcard-chev{width:16px;height:16px;color:var(--text2);transition:transform .2s;flex-shrink:0}
+.agcard.open .agcard-chev{transform:rotate(180deg)}
+.agcard-body{display:none;border-top:1px solid rgba(255,255,255,0.08)}
+.agcard.open .agcard-body{display:block}
+/* STEPS */
+.asteps{padding:20px 24px;display:flex;flex-direction:column;gap:12px}
+.astep{display:flex;align-items:flex-start;gap:12px}
+.astep-n{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.astep-t{font-size:15px;color:var(--text2);line-height:1.6}
+/* PROMPT LIST */
+.apl{padding:6px 0}
+.api{border-bottom:1px solid rgba(255,255,255,0.06);transition:all .15s;margin:0 8px;border-radius:0}
+.api:last-child{border-bottom:none}
+.api:hover{background:rgba(255,255,255,0.04);border-radius:10px;margin:2px 8px}
+.api-h{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
+.api-num{width:32px;height:22px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;font-family:var(--font-d);flex-shrink:0}
+.api-title{font-size:16px;font-weight:600;color:#fff;flex:1}
+.api-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:5px}
+.api-chev{width:15px;height:15px;color:var(--text2);transition:transform .2s;flex-shrink:0}
+.api.open .api-chev{transform:rotate(180deg)}
+.api-body{display:none;padding:4px 16px 20px}
+.api.open .api-body{display:block}
+.api-desc{font-size:14px;color:var(--text3);margin-bottom:10px;line-height:1.6}
+.api-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:18px;font-family:monospace;font-size:14.5px;color:#d4e0d4;line-height:1.9;white-space:pre-wrap;word-break:break-word;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04)}
+.api-box .ph{font-style:italic;font-weight:700}
+/* COPY BTN */
+.acpbtn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:9px 18px;background:var(--c3);color:#000;border:none;border-radius:100px;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;font-family:var(--font-b);box-shadow:0 2px 12px rgba(245,166,35,0.3)}
+.acpbtn:hover{filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,166,35,0.4)}
+.acpbtn.ok{background:#4ade80;box-shadow:0 2px 12px rgba(74,222,128,0.3);color:#000}
+.acpbtn svg{width:13px;height:13px}
+/* INTRO CARD */
+.aintro{background:linear-gradient(135deg,rgba(245,166,35,0.06),rgba(245,166,35,0.02));border:1px solid rgba(245,166,35,0.25);border-radius:var(--rl);padding:24px 26px;margin-bottom:22px;position:relative;overflow:hidden}
+.aintro::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(245,166,35,0.6),transparent)}
+.aintro-eye{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.aintro-title{font-family:var(--font-d);font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.aintro-desc{font-size:15px;color:var(--text2);line-height:1.75;max-width:600px}
+/* INFO TABLE */
+.aitbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--rl);margin:10px 0}
+table.aitbl{width:100%;border-collapse:collapse;font-size:12.5px}
+table.aitbl th{background:var(--bg3);color:var(--text3);font-weight:500;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
+table.aitbl td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);line-height:1.5;vertical-align:top}
+table.aitbl tr:last-child td{border-bottom:none}
+table.aitbl tr:hover td{background:var(--bg3)}
+.apill{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px}
+.pr{background:rgba(251,113,133,.12);color:#fb7185}
+.pa{background:rgba(251,191,36,.12);color:#fbbf24}
+.pg{background:rgba(74,222,128,.12);color:#4ade80}
+/* CALC */
+.acalc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0}
+.acc-card{background:var(--bg3);border-radius:var(--r);padding:14px 16px}
+.acc-lbl{font-size:11px;color:var(--text3);margin-bottom:6px}
+.acc-val{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--text)}
+.acc-inp{width:100%;margin-top:6px;font-size:15px;padding:6px 10px;background:var(--bg4);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:var(--font-b);outline:none}
+/* ETAPAS */
+.aetapas{display:flex;flex-direction:column;gap:0;margin:10px 0}
+.aetapa{display:flex;gap:16px;padding:12px 0;position:relative}
+.aetapa:not(:last-child)::after{content:'';position:absolute;left:15px;top:40px;bottom:0;width:1px;background:var(--border)}
+.aetapa-n{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--font-d);flex-shrink:0;z-index:1}
+.aetapa-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px}
+.aetapa-desc{font-size:14px;color:var(--text3);line-height:1.6}
+/* SCRIPT BOX */
+.ascript-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:20px;font-size:15px;color:#d4e0d4;line-height:1.9;white-space:pre-wrap;word-break:break-word;margin-bottom:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04)}
+.ascript-box b{color:#fff;font-weight:700}
+.sc-obj{color:#fbbf24;font-style:italic}
+.sc-resp{color:#86efac}
+/* MSG GRID */
+.amsg-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.amsg-card{background:var(--bg2);border:1px solid rgba(255,255,255,0.12);border-radius:var(--rl);overflow:hidden;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.amsg-card:hover{border-color:rgba(255,255,255,0.22);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+.amsg-h{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;user-select:none;border-bottom:1px solid rgba(255,255,255,0.08);background:var(--bg3)}
+.amsg-ico{font-size:16px}
+.amsg-title{font-size:15px;font-weight:700;color:#fff;flex:1}
+.amsg-chev{width:14px;height:14px;color:var(--text2);transition:transform .2s;flex-shrink:0}
+.amsg-card.open .amsg-chev{transform:rotate(180deg)}
+.amsg-body{display:none;padding:14px 18px}
+.amsg-card.open .amsg-body{display:block}
+.amsg-box{background:#0d0d0f;border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:14px;font-size:14px;color:#d4e0d4;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
+/* PLANILHA */
+.aplan-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.aps{background:var(--bg3);border-radius:var(--r);padding:12px 14px}
+.aps-l{font-size:13px;color:var(--text3);margin-bottom:4px}
+.aps-v{font-family:var(--font-d);font-size:18px;font-weight:700;color:var(--text)}
+.aptbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--rl);background:var(--bg2)}
+table.aptbl{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+table.aptbl th{background:var(--bg3);color:var(--text3);font-weight:500;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
+table.aptbl td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle}
+table.aptbl tr:last-child td{border-bottom:none}
+table.aptbl tr:hover td{background:var(--bg3)}
+table.aptbl input,table.aptbl select{width:100%;font-size:11px;padding:4px 6px;background:var(--bg4);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--font-b);outline:none}
+.aaddbtn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s;font-family:var(--font-b)}
+.aaddbtn:hover{background:var(--bg4);color:var(--text)}
+.adelbtn{background:none;border:1px solid var(--border);border-radius:5px;color:var(--text3);font-size:10px;padding:2px 7px;cursor:pointer;font-family:var(--font-b)}
+.adelbtn:hover{border-color:var(--rose);color:var(--rose)}
+/* MOD CHIPS N3 */
+.amod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.amod-chip{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.amod-chip:hover{border-color:var(--border2);background:var(--bg3)}
+.amod-chip.active{background:var(--c3b)}
+.amod-num{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1px;margin-bottom:8px;font-family:var(--font-d)}
+.amod-ico{font-size:20px;margin-bottom:8px}
+.amod-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
+.amod-sub{font-size:11px;color:var(--text3);margin-top:3px}
+.amod-cnt{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;background:var(--c3b);border-radius:4px;padding:2px 7px}
+.amod-panel{display:none}.amod-panel.active{display:block}
+/* CDC CARDS */
+.acdc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.acdc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px}
+.acdc-art{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:4px}
+.acdc-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
+.acdc-desc{font-size:11.5px;color:var(--text3);line-height:1.6;margin-bottom:8px}
+.acdc-uso{font-size:13px;color:var(--teal);background:rgba(45,212,191,.08);border-radius:6px;padding:5px 8px;line-height:1.5}
+/* PRAZOS */
+.aprazos{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.aprazo{display:flex;align-items:center;gap:12px;background:var(--bg3);border-radius:var(--r);padding:10px 14px}
+.apz-tipo{font-size:14px;font-weight:500;color:var(--text);width:220px;flex-shrink:0}
+.apz-bar{flex:1;height:5px;background:var(--bg5);border-radius:3px;overflow:hidden}
+.apz-fill{height:100%;border-radius:3px}
+.apz-prazo{font-size:14px;font-weight:600;font-family:var(--font-d);width:64px;text-align:right;flex-shrink:0}
+/* SCORE PLAN */
+.ascore-plan{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.asp-card{background:var(--bg3);border-radius:var(--rl);padding:14px;border:1px solid var(--border)}
+.asp-fase{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.asp-per{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:8px}
+.asp-ul{list-style:none}
+.asp-ul li{font-size:11.5px;color:var(--text2);padding:3px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.asp-ul li:last-child{border-bottom:none}
+.asp-ul li::before{content:'→ '}
+.asp-res{margin-top:8px;font-size:13px;font-weight:600;background:var(--green-bg);color:var(--green);border-radius:6px;padding:5px 8px;text-align:center}
+/* BUDGET */
+.abudget{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
+.abud-in{background:var(--bg3);border-radius:var(--rl);padding:18px}
+.abud-lbl{font-size:12px;color:var(--text3);margin-bottom:6px}
+.abud-inp{width:100%;font-size:18px;font-family:var(--font-d);font-weight:700;padding:10px 12px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--r);outline:none;transition:border-color .15s}
+.abud-res{background:var(--bg3);border-radius:var(--rl);padding:18px}
+.abud-item{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)}
+.abud-item:last-child{border-bottom:none}
+.abud-cat{font-size:15px;color:var(--text2)}
+.abud-val{font-family:var(--font-d);font-size:15px;font-weight:700}
+.abud-bar{width:100%;height:3px;background:var(--bg5);border-radius:2px;margin-top:3px;overflow:hidden}
+.abud-fill{height:100%;border-radius:2px}
+/* CRED TABLE */
+.acred{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.acred-item{display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;transition:border-color .2s}
+.acred-item:hover{border-color:var(--border2)}
+.acred-ico{font-size:18px;width:28px;flex-shrink:0}
+.acred-name{font-size:15px;font-weight:500;color:var(--text)}
+.acred-desc{font-size:13px;color:var(--text3);margin-top:2px}
 .acred-bdg{font-size:10px;font-weight:600;padding:2px 9px;border-radius:5px}
 .bdg-e{background:var(--green-bg);color:var(--green)}
 .bdg-m{background:rgba(251,191,36,.12);color:#fbbf24}
@@ -450,7 +732,7 @@ table.aptbl input,table.aptbl select{width:100%;font-size:11px;padding:4px 6px;b
   const fontImport = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">`;
 
-  return fontImport+appCSS+gerarN3();
+  return gerarN3();
 }
 
 
@@ -474,24 +756,49 @@ function gerarN3(){
     </div>
     <div class="asb-nav">
       <div class="asb-lbl">6 Módulos do Método</div>
-      ${[['🔍','Módulo 1 — Diagnóstico'],['⚖️','Módulo 2 — Direitos'],['🎯','Módulo 3 — Estratégia'],['🧹','Módulo 4 — Serasa'],['📊','Módulo 5 — Finanças'],['🚀','Módulo 6 — Crédito']].map((m,i)=>`<a href="#" class="asb-a n3nav" onclick="n3mod(${i},event)" style="${i===0?'background:rgba(245,166,35,0.09);color:#fbbf4a':''}">${m[0]} ${m[1]}</a>`).join('')}
+      ${[
+        ['🔍','Módulo 1 — Diagnóstico','#f5a623','rgba(245,166,35,0.18)'],
+        ['⚖️','Módulo 2 — Direitos','#60a5fa','rgba(96,165,250,0.18)'],
+        ['🎯','Módulo 3 — Estratégia','#f472b6','rgba(244,114,182,0.18)'],
+        ['🧹','Módulo 4 — Serasa','#a78bfa','rgba(167,139,250,0.18)'],
+        ['📊','Módulo 5 — Finanças','#34d399','rgba(52,211,153,0.18)'],
+        ['🚀','Módulo 6 — Crédito','#fb923c','rgba(251,146,60,0.18)'],
+      ].map((m,i)=>`
+        <a href="#" class="asb-a n3nav" onclick="n3mod(${i},event)"
+           style="${i===0?`background:${m[3]};color:${m[2]};font-weight:700;`:`color:${m[2]};`}">
+          <span style="width:28px;height:28px;border-radius:7px;background:${m[3]};display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">${m[0]}</span>
+          <span style="color:inherit">${m[1]}</span>
+        </a>`).join('')}
       <div class="asb-sep"></div>
-      <div class="asb-lbl">Material extra</div>
-      <a href="#" class="asb-a" onclick="n3showSection('all58',event)" style="color:var(--text3)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-        58 Prompts prontos
+      <div class="asb-lbl">Material Extra</div>
+
+      <a href="#" class="asb-a" onclick="n3showSection('all58',event)">
+        <span class="asb-ico" style="background:rgba(0,232,122,0.15);color:#00e87a;font-size:15px">💬</span>
+        <span style="color:#d4d4d8">58 Prompts prontos</span>
+        <span class="asb-badge" style="background:rgba(0,232,122,0.15);color:#00e87a">58</span>
       </a>
-      <a href="#" class="asb-a" onclick="n3showSection('n2scripts',event)" style="color:var(--text3)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        Scripts por credor
+
+      <a href="#" class="asb-a" onclick="n3showSection('n2scripts',event)">
+        <span class="asb-ico" style="background:rgba(96,165,250,0.15);color:#60a5fa;font-size:15px">📋</span>
+        <span style="color:#d4d4d8">Scripts por credor</span>
+        <span class="asb-badge" style="background:rgba(96,165,250,0.15);color:#60a5fa">6</span>
       </a>
-      <a href="#" class="asb-a" onclick="n3showSection('n2msgs',event)" style="color:var(--text3)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        Modelos de mensagem
+
+      <a href="#" class="asb-a" onclick="n3showSection('n2msgs',event)">
+        <span class="asb-ico" style="background:rgba(244,114,182,0.15);color:#f472b6;font-size:15px">✉️</span>
+        <span style="color:#d4d4d8">Modelos de mensagem</span>
+        <span class="asb-badge" style="background:rgba(244,114,182,0.15);color:#f472b6">8</span>
       </a>
-      <a href="#" class="asb-a" onclick="n3showSection('n2plan',event)" style="color:var(--text3)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 10h18M3 14h18M10 3v18M6 3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6a3 3 0 013-3z"/></svg>
-        Planilha de dívidas
+
+      <a href="#" class="asb-a" onclick="n3showSection('n2plan',event)">
+        <span class="asb-ico" style="background:rgba(167,139,250,0.15);color:#a78bfa;font-size:15px">📊</span>
+        <span style="color:#d4d4d8">Planilha de dívidas</span>
+      </a>
+
+      <a href="#" class="asb-a" onclick="n3showSection('guia',event)">
+        <span class="asb-ico" style="background:rgba(251,146,60,0.15);color:#fb923c;font-size:15px">📖</span>
+        <span style="color:#fb923c;font-weight:600">Guia Rápido</span>
+        <span class="asb-badge" style="background:rgba(251,146,60,0.2);color:#fb923c">NOVO</span>
       </a>
       <div class="asb-sep"></div>
       <div style="padding:0 10px;margin-bottom:8px">
@@ -546,86 +853,280 @@ function gerarN3(){
         <div class="amsg-grid" id="n3-n2-msgs"></div>
       </div>
       <div class="amod-panel" id="n3sec-n2plan">
-        <div class="aintro" style="border-color:rgba(0,200,83,0.3);background:linear-gradient(135deg,rgba(0,200,83,0.06),rgba(0,200,83,0.02))">
-          <div class="aintro-eye" style="color:#00c853">✦ Planilha Inteligente de Dívidas</div>
-          <div class="aintro-title">Diagnóstico financeiro com juros compostos reais</div>
-          <div class="aintro-desc">Digite o valor original e os meses em atraso — a planilha calcula automaticamente o valor corrigido, a oferta ideal, a prescrição e a prioridade de negociação.</div>
-        </div>
 
-        <!-- CARDS DE RESUMO -->
-        <div class="aplan-stats" style="grid-template-columns:repeat(5,1fr);margin-bottom:20px">
-          <div class="aps" style="border:1px solid rgba(255,255,255,0.1)">
-            <div class="aps-l">Dívidas</div>
-            <div class="aps-v" id="n3-qtd" style="color:#ebebeb">0</div>
+        <!-- HEADER -->
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#00c853;background:rgba(0,200,83,0.1);border:1px solid rgba(0,200,83,0.25);padding:4px 12px;border-radius:100px;margin-bottom:8px">✦ Planilha Inteligente de Dívidas</div>
+            <div style="font-family:var(--font-d);font-size:22px;font-weight:700;color:#fff;margin-bottom:4px">Diagnóstico financeiro completo</div>
+            <div style="font-size:13px;color:var(--text3)">Preencha abaixo — cálculos automáticos com juros compostos reais (BCB 2025/2026)</div>
           </div>
-          <div class="aps" style="border:1px solid rgba(251,113,133,0.3)">
-            <div class="aps-l">Total original</div>
-            <div class="aps-v" id="n3-tot" style="color:#fb7185">R$ 0</div>
-          </div>
-          <div class="aps" style="border:1px solid rgba(251,191,36,0.3)">
-            <div class="aps-l">Total corrigido</div>
-            <div class="aps-v" id="n3-tot-corr" style="color:#fbbf24">R$ 0</div>
-          </div>
-          <div class="aps" style="border:1px solid rgba(74,222,128,0.3)">
-            <div class="aps-l">Economia potencial</div>
-            <div class="aps-v" id="n3-econ" style="color:#4ade80">R$ 0</div>
-          </div>
-          <div class="aps" style="border:1px solid rgba(245,166,35,0.3)">
-            <div class="aps-l">Prioridade alta</div>
-            <div class="aps-v" id="n3-alta" style="color:#f5a623">0</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <div style="display:flex;gap:6px;background:#111112;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:4px">
+              <button id="pf-all" onclick="n3SetFiltro('all')" style="padding:5px 12px;border-radius:7px;border:none;background:#1f1f22;color:#ebebeb;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-b)">Todas</button>
+              <button id="pf-urgente" onclick="n3SetFiltro('urgente')" style="padding:5px 12px;border-radius:7px;border:none;background:none;color:#fb7185;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-b)">🔴 Urgente</button>
+              <button id="pf-alta" onclick="n3SetFiltro('alta')" style="padding:5px 12px;border-radius:7px;border:none;background:none;color:#fbbf24;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-b)">🟡 Alta</button>
+              <button id="pf-quitado" onclick="n3SetFiltro('quitado')" style="padding:5px 12px;border-radius:7px;border:none;background:none;color:#4ade80;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-b)">✅ Quitado</button>
+            </div>
           </div>
         </div>
 
-        <!-- LEGENDA DE TAXAS -->
-        <div style="background:#0d0d0f;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:11px;color:var(--text3);line-height:1.8">
-          <span style="color:#fbbf24;font-weight:700">Taxas utilizadas (juros compostos mensais):</span>
-          Cartão de crédito: <b style="color:#fb7185">15%/mês</b> · Cheque especial: <b style="color:#fb7185">12%/mês</b> · Empréstimo pessoal: <b style="color:#fbbf24">6%/mês</b> · Financiamento: <b style="color:#4ade80">1,5%/mês</b> · Água/Luz/Gás: <b style="color:#4ade80">1%/mês</b> · Aluguel: <b style="color:#4ade80">1%/mês</b>
-          <span style="display:block;margin-top:4px;color:#3f3f46">Fontes: Banco Central do Brasil (BCB) e Serasa — taxas médias de mercado 2025/2026. O valor corrigido é estimativa — o credor pode cobrar diferente.</span>
+        <!-- KPI CARDS -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px">
+          <div style="background:#111112;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 16px">
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Dívidas</div>
+            <div id="n3-qtd" style="font-family:var(--font-d);font-size:26px;font-weight:700;color:#ebebeb;line-height:1">0</div>
+            <div id="n3-qtd-sub" style="font-size:10px;color:var(--text3);margin-top:4px">— cadastradas</div>
+          </div>
+          <div style="background:#111112;border:1px solid rgba(251,113,133,0.25);border-radius:12px;padding:14px 16px">
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Total original</div>
+            <div id="n3-tot" style="font-family:var(--font-d);font-size:22px;font-weight:700;color:#fb7185;line-height:1">R$ 0</div>
+            <div style="font-size:10px;color:var(--text3);margin-top:4px">valor na época</div>
+          </div>
+          <div style="background:#111112;border:1px solid rgba(251,191,36,0.25);border-radius:12px;padding:14px 16px">
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Total corrigido</div>
+            <div id="n3-tot-corr" style="font-family:var(--font-d);font-size:22px;font-weight:700;color:#fbbf24;line-height:1">R$ 0</div>
+            <div id="n3-juros-sub" style="font-size:10px;color:var(--text3);margin-top:4px">com juros acumulados</div>
+          </div>
+          <div style="background:#111112;border:1px solid rgba(74,222,128,0.25);border-radius:12px;padding:14px 16px">
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Meta de oferta</div>
+            <div id="n3-oferta" style="font-family:var(--font-d);font-size:22px;font-weight:700;color:#4ade80;line-height:1">R$ 0</div>
+            <div id="n3-econ" style="font-size:10px;color:#4ade80;margin-top:4px">economia potencial</div>
+          </div>
+          <div style="background:#111112;border:1px solid rgba(245,166,35,0.25);border-radius:12px;padding:14px 16px">
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Urgentes</div>
+            <div id="n3-alta" style="font-family:var(--font-d);font-size:26px;font-weight:700;color:#f5a623;line-height:1">0</div>
+            <div style="font-size:10px;color:var(--text3);margin-top:4px">negocie esta semana</div>
+          </div>
+        </div>
+
+        <!-- STATUS TAXAS BCB -->
+        <div style="display:flex;align-items:center;gap:10px;background:#0d0d0f;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:10px 16px;margin-bottom:16px">
+          <svg width="14" height="14" fill="none" stroke="#4ade80" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <span id="n3-taxas-status" style="font-size:11px;color:var(--text3);flex:1">Carregando taxas do Banco Central...</span>
+          <span id="n3-taxas-badge" style="font-size:9px;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:100px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);color:#fbbf24">FIXAS</span>
+        </div>
+
+        <!-- BARRA DE PROGRESSO GERAL -->
+        <div id="n3-progresso-wrap" style="display:none;background:#111112;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:12px;font-weight:600;color:var(--text2)">Progresso de quitação</span>
+            <span id="n3-prog-pct" style="font-size:12px;font-weight:700;color:#4ade80">0%</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden">
+            <div id="n3-prog-bar" style="height:100%;background:linear-gradient(90deg,#00c853,#4ade80);border-radius:3px;width:0%;transition:width .6s ease"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px">
+            <span id="n3-prog-quit" style="font-size:10px;color:#4ade80"></span>
+            <span id="n3-prog-rest" style="font-size:10px;color:var(--text3)"></span>
+          </div>
         </div>
 
         <!-- TABELA -->
-        <div class="aptbl-wrap" style="border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden">
-          <table class="aptbl" style="table-layout:fixed">
-            <thead>
-              <tr style="background:#111112">
-                <th style="width:14%;padding:12px 10px">Credor</th>
-                <th style="width:10%;padding:12px 10px">Valor orig. (R$)</th>
-                <th style="width:13%;padding:12px 10px">Tipo</th>
-                <th style="width:7%;padding:12px 10px">Meses atraso</th>
-                <th style="width:11%;padding:12px 10px;color:#fbbf24">Valor corrigido</th>
-                <th style="width:9%;padding:12px 10px;color:#4ade80">Oferta ideal</th>
-                <th style="width:10%;padding:12px 10px;color:#fb7185">Prescrição</th>
-                <th style="width:9%;padding:12px 10px;color:#f5a623">Prioridade</th>
-                <th style="width:10%;padding:12px 10px">Status</th>
-                <th style="width:7%;padding:12px 10px"></th>
-              </tr>
-            </thead>
-            <tbody id="n3-ptbody"></tbody>
-          </table>
+        <div style="background:#111112;border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;margin-bottom:14px">
+          <!-- THEAD -->
+          <div style="display:grid;grid-template-columns:1.8fr 1.1fr 1.5fr .8fr 1.2fr 1.2fr 1.1fr 1fr 1.2fr 56px;background:#0d0d0f;border-bottom:1px solid rgba(255,255,255,0.07);padding:0 8px">
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;cursor:pointer;user-select:none" onclick="n3Sort('credor')">Credor <span id="ns-credor"></span></div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;cursor:pointer;user-select:none" onclick="n3Sort('valor')">Original <span id="ns-valor"></span></div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px">Tipo</div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;cursor:pointer;user-select:none" onclick="n3Sort('meses')">Meses <span id="ns-meses"></span></div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:#fbbf24;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;user-select:none" onclick="n3Sort('corrigido')">Corrigido <span id="ns-corrigido"></span></div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:#4ade80;text-transform:uppercase;letter-spacing:.8px">Oferta ideal</div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:#fb7185;text-transform:uppercase;letter-spacing:.8px">Prescrição</div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:#f5a623;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;user-select:none" onclick="n3Sort('prio')">Prioridade <span id="ns-prio"></span></div>
+            <div style="padding:10px 8px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px">Status</div>
+            <div></div>
+          </div>
+          <!-- TBODY -->
+          <div id="n3-ptbody"></div>
+          <!-- EMPTY STATE -->
+          <div id="n3-empty" style="display:none;padding:48px 24px;text-align:center">
+            <div style="font-size:32px;margin-bottom:12px">📋</div>
+            <div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px">Nenhuma dívida cadastrada</div>
+            <div style="font-size:13px;color:var(--text3)">Clique em "Adicionar dívida" para começar</div>
+          </div>
+          <!-- TOTALIZADOR -->
+          <div id="n3-total-row" style="display:none;display:grid;grid-template-columns:1.8fr 1.1fr 1.5fr .8fr 1.2fr 1.2fr 1.1fr 1fr 1.2fr 56px;background:#0d0d0f;border-top:1px solid rgba(255,255,255,0.1);padding:0 8px">
+            <div style="padding:10px 8px;font-size:11px;font-weight:700;color:var(--text2);grid-column:1/5">TOTAL (ativos)</div>
+            <div id="n3-foot-corr" style="padding:10px 8px;font-size:12px;font-weight:700;color:#fbbf24"></div>
+            <div id="n3-foot-oferta" style="padding:10px 8px;font-size:12px;font-weight:700;color:#4ade80"></div>
+            <div style="padding:10px 8px"></div>
+            <div style="padding:10px 8px"></div>
+            <div style="padding:10px 8px"></div>
+            <div></div>
+          </div>
         </div>
 
-        <div style="display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap">
-          <button class="aaddbtn" onclick="n3AddLinha()" style="background:rgba(0,200,83,0.1);border-color:rgba(0,200,83,0.3);color:#00c853">
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        <!-- AÇÕES -->
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+          <button onclick="n3AddLinha()" style="display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:rgba(0,200,83,0.12);border:1px solid rgba(0,200,83,0.35);border-radius:9px;font-size:13px;font-weight:700;color:#00c853;cursor:pointer;font-family:var(--font-b);transition:all .15s" onmouseover="this.style.background='rgba(0,200,83,0.2)'" onmouseout="this.style.background='rgba(0,200,83,0.12)'">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
             Adicionar dívida
           </button>
-          <button onclick="n3ExportCSV()" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:12px;color:var(--text2);cursor:pointer;font-family:var(--font-b)">
+          <button onclick="n3ExportCSV()" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;font-family:var(--font-b);transition:all .15s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             Exportar CSV
           </button>
-          <span style="font-size:11px;color:var(--text3);margin-left:auto">💾 Dados salvos automaticamente no navegador</span>
+          <button onclick="n3LimparTudo()" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;background:rgba(251,113,133,0.05);border:1px solid rgba(251,113,133,0.15);border-radius:9px;font-size:12px;font-weight:500;color:#fb7185;cursor:pointer;font-family:var(--font-b);transition:all .15s" onmouseover="this.style.background='rgba(251,113,133,0.12)'" onmouseout="this.style.background='rgba(251,113,133,0.05)'">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            Limpar tudo
+          </button>
+          <span style="font-size:11px;color:var(--text3);margin-left:auto;display:flex;align-items:center;gap:5px">
+            <span style="width:6px;height:6px;background:#00c853;border-radius:50%;display:inline-block;animation:blink 2s infinite"></span>
+            Salvando automaticamente
+          </span>
         </div>
 
-        <!-- LEGENDA DE CORES -->
-        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;padding:12px 16px;background:#0d0d0f;border-radius:10px;border:1px solid rgba(255,255,255,0.06)">
-          <span style="font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:1px;align-self:center">Prioridade:</span>
-          <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;background:#fb7185;border-radius:50%;display:inline-block"></span><span style="color:#fb7185">Urgente</span> — negocie esta semana</span>
-          <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;background:#fbbf24;border-radius:50%;display:inline-block"></span><span style="color:#fbbf24">Alta</span> — próximo mês</span>
-          <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block"></span><span style="color:#4ade80">Média</span> — pode aguardar</span>
-          <span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;background:var(--text3);border-radius:50%;display:inline-block"></span><span style="color:var(--text3)">Prescrita</span> — avalie negociar</span>
-        </div>
+        <!-- LEGENDA + TAXAS colapsável -->
+        <details style="background:#0d0d0f;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 16px">
+          <summary style="font-size:11px;font-weight:600;color:var(--text3);cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px">
+            <span>ℹ️</span> Taxas e critérios de cálculo utilizados
+          </summary>
+          <div style="margin-top:10px;font-size:11px;color:var(--text3);line-height:1.9">
+            <span style="color:#fbbf24;font-weight:700">Juros compostos mensais (fonte: BCB — SGS):</span><br>
+            <span id="n3-taxas-detalhe">
+            Cartão de crédito: <b style="color:#fb7185">15%/mês</b> · Cheque especial: <b style="color:#fb7185">12%/mês</b> · Empréstimo pessoal: <b style="color:#fbbf24">6%/mês</b> · Financiamento: <b style="color:#4ade80">1,5%/mês</b> · Água/Luz/Gás: <b style="color:#4ade80">1%/mês</b> · Aluguel: <b style="color:#4ade80">1%/mês</b>
+            </span><br>
+            <span style="display:block;margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.06)">
+              <b style="color:#fbbf24">Prioridade:</b>
+              <span style="color:#fb7185">🔴 Urgente</span> — score ≥ 70 (negocie esta semana) ·
+              <span style="color:#fbbf24">🟡 Alta</span> — score ≥ 40 (próximo mês) ·
+              <span style="color:#4ade80">🟢 Média</span> — pode aguardar ·
+              <span style="color:var(--text3)">⚪ Prescrita</span> — direito do credor pode estar extinto (avalie com advogado)<br>
+              O valor corrigido é estimativa — o credor pode cobrar diferente. Consulte sempre um especialista.
+            </span>
+          </div>
+        </details>
       </div>
     </div>
+
+      <div class="amod-panel" id="n3sec-guia">
+        <div style="padding:0 0 60px">
+
+          <!-- HERO -->
+          <div style="background:linear-gradient(135deg,rgba(0,200,83,0.08),rgba(0,200,83,0.02));border:1px solid rgba(0,200,83,0.25);border-radius:16px;padding:28px 28px 24px;margin-bottom:28px;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c853,transparent)"></div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#00c853;margin-bottom:10px">Guia Rápido</div>
+            <div style="font-family:var(--font-d);font-size:26px;font-weight:800;color:#ebebeb;margin-bottom:8px">Começando do zero?</div>
+            <div style="font-size:15px;color:#9a9aa3;line-height:1.7">Não precisa entender tudo de uma vez. Siga os 4 passos abaixo — em menos de 10 minutos você já tem uma proposta pronta para o credor.</div>
+          </div>
+
+          <!-- SEÇÃO 01 — 4 PASSOS SIMPLES -->
+          <div style="background:#111112;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;margin-bottom:16px">
+            <div style="background:#00c853;padding:12px 20px">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#000">Passo a passo — faça isso agora</span>
+            </div>
+            <div style="padding:8px 20px 20px">
+              ${[
+                ['1','#00c853','Descubra o valor real da sua dívida',
+                 '👉 Clique no botão abaixo para ir direto à calculadora. Digite o valor original da dívida, quantos meses está atrasado e a taxa de juros — ela calcula na hora quanto você pode oferecer ao credor.<br><br><a href="#" onclick="n3mod(0,event);setTimeout(function(){var el=document.getElementById(&quot;c0-orig&quot;);if(el)el.scrollIntoView({behavior:&quot;smooth&quot;,block:&quot;center&quot;});},400);return false;" style="display:inline-flex;align-items:center;gap:8px;background:#00c853;color:#000;font-weight:700;font-size:12px;padding:8px 18px;border-radius:100px;text-decoration:none;margin-top:4px">🔢 Ir para a Calculadora →</a>'],
+                ['2','#60a5fa','Veja seus direitos antes de ligar',
+                 'Acesse o <b style="color:#ebebeb">Módulo 02 — Seus Direitos</b>. Se o credor está ligando demais ou fazendo ameaças, use o prompt M2-01 para gerar uma notificação formal agora mesmo.'],
+                ['3','#f5a623','Copie o prompt e use no ChatGPT ou Claude',
+                 'Escolha qualquer prompt, clique em <b style="color:#ebebeb">"Copiar prompt"</b>, cole no ChatGPT ou Claude, substitua os textos entre [colchetes] pelos seus dados e envie. A IA monta a negociação para você.'],
+                ['4','#a78bfa','Ligue ou envie mensagem com o script pronto',
+                 'Vá em <b style="color:#ebebeb">Scripts por Credor</b>, escolha o tipo (banco, financeira, luz/água...) e siga o roteiro linha a linha. Não precisa improvisar nada.'],
+              ].map(([n,c,t,d],i)=>`
+                <div style="display:flex;gap:16px;padding:18px 0;${i<3?'border-bottom:1px solid rgba(255,255,255,0.05)':''}">
+                  <div style="width:32px;height:32px;border-radius:50%;background:${c}20;border:2px solid ${c}60;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:${c};flex-shrink:0;margin-top:2px">${n}</div>
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:#ebebeb;margin-bottom:6px">${t}</div>
+                    <div style="font-size:13px;color:#6b7280;line-height:1.7">${d}</div>
+                  </div>
+                </div>`).join('')}
+            </div>
+          </div>
+
+          <!-- AVISO IMPORTANTE -->
+          <div style="background:rgba(251,113,133,0.07);border:1px solid rgba(251,113,133,0.25);border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;gap:14px;align-items:flex-start">
+            <div style="font-size:20px;flex-shrink:0">⚠️</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:#fb7185;margin-bottom:4px">Nunca pague antes de ter confirmação por escrito</div>
+              <div style="font-size:13px;color:#6b7280;line-height:1.6">Feito o acordo com o credor, exija o boleto e a carta de quitação antes de qualquer pagamento. Guarde o protocolo de atendimento. Isso protege você legalmente.</div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 02 — COMO USAR OS PROMPTS -->
+          <div style="background:#111112;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;margin-bottom:16px">
+            <div style="background:#00c853;padding:12px 20px">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#000">Como preencher um prompt — é simples</span>
+            </div>
+            <div style="padding:20px">
+              <div style="font-size:14px;color:#9a9aa3;margin-bottom:16px;line-height:1.6">Todo prompt tem campos entre <span style="font-family:monospace;background:rgba(255,255,255,0.08);padding:2px 7px;border-radius:4px;color:#ebebeb">[colchetes]</span>. Você só precisa substituir pelo seu dado real. Veja:</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+                <div style="background:#09090a;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:16px">
+                  <div style="font-size:10px;font-weight:700;color:#4f4f5a;margin-bottom:12px;text-transform:uppercase;letter-spacing:1.5px">❌ Antes — não enviar assim</div>
+                  <div style="font-family:monospace;font-size:12px;color:#6b7280;line-height:1.9">Dívida com <span style="color:#fb7185">[credor]</span>,<br>tipo <span style="color:#fb7185">[tipo]</span>.<br>Último pag.: <span style="color:#fb7185">[data]</span>.</div>
+                </div>
+                <div style="background:#0a1f12;border:1px solid rgba(0,200,83,0.3);border-radius:10px;padding:16px">
+                  <div style="font-size:10px;font-weight:700;color:#00c853;margin-bottom:12px;text-transform:uppercase;letter-spacing:1.5px">✅ Depois — pronto para enviar</div>
+                  <div style="font-family:monospace;font-size:12px;color:#00e87a;line-height:1.9">Dívida com <b>Nubank</b>,<br>tipo <b>cartão</b>.<br>Último pag.: <b>mar/2023</b>.</div>
+                </div>
+              </div>
+              <div style="background:rgba(0,200,83,0.07);border-left:3px solid #00c853;padding:14px 16px;border-radius:0 8px 8px 0;font-size:13px;color:#9a9aa3;line-height:1.7">
+                <b style="color:#00c853">Regra de ouro:</b> quanto mais detalhes você colocar, mais certeira é a resposta da IA. Valor, credor, tipo de dívida e data do último pagamento são os mais importantes.
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 03 — O QUE CADA MÓDULO FAZ -->
+          <div style="background:#111112;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;margin-bottom:16px">
+            <div style="background:#00c853;padding:12px 20px">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#000">O que cada módulo resolve</span>
+            </div>
+            <div style="padding:8px 20px 20px">
+              ${[
+                ['🔍','#f5a623','Módulo 01 — Diagnóstico','Não sabe por onde começar? Aqui você mapeia todas as dívidas, descobre quais já prescreveram e quais negociar primeiro.'],
+                ['⚖️','#60a5fa','Módulo 02 — Seus Direitos','Credor ligando demais? Ameaçando? Aqui você aprende como se defender pelo CDC e exigir exclusão do Serasa após pagar.'],
+                ['🎯','#f472b6','Módulo 03 — Estratégia por Dívida','Deve um carro, imóvel ou dinheiro para alguém? Cada situação tem um script específico aqui.'],
+                ['🧹','#a78bfa','Módulo 04 — Limpando o Nome','Quer entender seu Serasa ou usar o Limpa Nome? Este módulo mostra como fazer isso estrategicamente.'],
+                ['📊','#34d399','Módulo 05 — Finanças pós-Quitação','Depois de quitar, como não voltar a se endividar? Orçamento, reserva e hábitos que funcionam.'],
+                ['🚀','#fb923c','Módulo 06 — Crédito do Zero','Score baixo? Qual cartão pedir primeiro? Como subir rápido? Tudo aqui com plano de 6 meses.'],
+              ].map(([ico,c,t,d],i)=>`
+                <div style="display:flex;gap:14px;padding:16px 0;${i<5?'border-bottom:1px solid rgba(255,255,255,0.05)':''}">
+                  <div style="width:36px;height:36px;border-radius:9px;background:${c}20;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${ico}</div>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:${c};margin-bottom:4px">${t}</div>
+                    <div style="font-size:13px;color:#6b7280;line-height:1.6">${d}</div>
+                  </div>
+                </div>`).join('')}
+            </div>
+          </div>
+
+          <!-- SEÇÃO 04 — FAQ DIRETO AO PONTO -->
+          <div style="background:#111112;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;margin-bottom:16px">
+            <div style="background:#00c853;padding:12px 20px">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#000">Perguntas rápidas</span>
+            </div>
+            <div style="padding:8px 20px">
+              ${[
+                ['A senha não funciona','Verifique se está toda em MAIÚSCULAS. Se ainda não funcionar, copie e cole diretamente do e-mail de confirmação da compra.'],
+                ['Qual IA usar com os prompts?','ChatGPT ou Claude — ambos funcionam. Para resultados mais detalhados, use o GPT-4 ou Claude Sonnet (versões pagas).'],
+                ['O desconto é garantido?','Não existe garantia de desconto — cada credor decide. Mas os prompts usam os melhores argumentos legais para maximizar suas chances. E você tem 7 dias de garantia no produto.'],
+                ['Posso usar em celular?','Sim. Funciona direto no navegador do celular, sem precisar instalar nada.'],
+                ['Como exportar a planilha?',"Vá em Planilha de dívidas no menu lateral → clique em 'Exportar CSV' → abre no Excel ou Google Planilhas."],
+                ['Posso usar os prompts mais de uma vez?','Sim, quantas vezes quiser e para quantas dívidas tiver. O acesso é vitalício.'],
+              ].map(([q,a],i)=>`
+                <div style="padding:16px 0;${i<5?'border-bottom:1px solid rgba(255,255,255,0.05)':''}">
+                  <div style="font-size:14px;font-weight:700;color:#ebebeb;margin-bottom:5px">→ ${q}</div>
+                  <div style="font-size:13px;color:#6b7280;line-height:1.6">${a}</div>
+                </div>`).join('')}
+            </div>
+          </div>
+
+          <!-- SUPORTE -->
+          <div style="background:rgba(0,200,83,0.07);border:1px solid rgba(0,200,83,0.25);border-radius:14px;padding:28px;text-align:center">
+            <div style="font-size:28px;margin-bottom:10px">🛡️</div>
+            <div style="font-family:var(--font-d);font-size:18px;font-weight:700;color:#ebebeb;margin-bottom:6px">Garantia de 7 dias</div>
+            <div style="font-size:13px;color:#9a9aa3;margin-bottom:6px;line-height:1.6">Se não ficar satisfeito por qualquer motivo, devolvemos 100% do valor pago. Sem burocracia.</div>
+            <div style="font-size:13px;color:#6b7280;margin-bottom:20px">Dúvidas? Fale com a gente:</div>
+            <a href="mailto:maximus.consultoria.trib@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:#00c853;color:#000;font-weight:800;font-size:14px;padding:12px 28px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='brightness(1)'">
+              ✉️ maximus.consultoria.trib@gmail.com
+            </a>
+          </div>
+
+        </div>
+      </div>
   </div>`;
 }
 
@@ -1042,7 +1543,22 @@ function n3mod(i,ev){
   const chips=document.querySelectorAll('.amod-chip');
   if(chips[i])chips[i].classList.add('active');
   const navLinks=document.querySelectorAll('.asb-a.n3nav');
-  if(navLinks[i])navLinks[i].style.cssText='background:rgba(245,166,35,0.09);color:#fbbf4a';
+  const modColors=[
+    ['#f5a623','rgba(245,166,35,0.18)'],
+    ['#60a5fa','rgba(96,165,250,0.18)'],
+    ['#f472b6','rgba(244,114,182,0.18)'],
+    ['#a78bfa','rgba(167,139,250,0.18)'],
+    ['#34d399','rgba(52,211,153,0.18)'],
+    ['#fb923c','rgba(251,146,60,0.18)'],
+  ];
+  if(navLinks[i]){
+    const [c,bg]=modColors[i];
+    navLinks[i].style.background=bg;
+    navLinks[i].style.color=c;
+    navLinks[i].style.fontWeight='700';
+    const ico=navLinks[i].querySelector('span[style*="border-radius:7px"]');
+    if(ico) ico.style.background=bg.replace('0.18','0.35');
+  }
   const crumb=document.getElementById('n3-crumb');
   if(crumb)crumb.textContent='Módulo '+(i+1)+' — '+n3Names[i];
   const lbl=document.getElementById('n3-modlbl');
@@ -1101,7 +1617,7 @@ function n3showSection(id, ev){
   if(ev) ev.preventDefault();
   document.querySelectorAll('.amod-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.amod-chip').forEach(c=>c.classList.remove('active'));
-  document.querySelectorAll('.asb-a.n3nav').forEach(a=>a.style.cssText='');
+  document.querySelectorAll('.asb-a.n3nav').forEach(a=>{a.style.cssText='';});
   document.querySelectorAll('.asb-a').forEach(a=>a.classList.remove('active'));
   const panel = document.getElementById('n3sec-'+id);
   if(panel) panel.classList.add('active');
@@ -1238,193 +1754,426 @@ function n3showSection(id, ev){
   }
   if(id==='n2plan'){
     n3LoadStorage(); n3RenderPlan();
+    // Atualiza taxas do BCB ao abrir a planilha (apenas uma vez por sessão)
+    if (!_taxasDataRef) n3AtualizarTaxas();
   }
+  // Guia Rápido — rendered via template, nothing to init
 }
 
-// ══════════════════════════════════════
-// PLANILHA INTELIGENTE — JUROS COMPOSTOS
-// ══════════════════════════════════════
+// ══════════════════════════════════════════════════
+// PLANILHA INTELIGENTE v2 — SENIOR REFACTOR
+// ══════════════════════════════════════════════════
 
-// Taxas mensais por tipo (BCB/Serasa 2025-2026)
-const TAXAS_MENSAIS = {
-  'Cartão de crédito':   0.150,  // 15%/mês — média mercado BCB jan/2026
-  'Cheque especial':     0.120,  // 12%/mês — média BCB
-  'Empréstimo pessoal':  0.060,  // 6%/mês — média BCB
-  'Financiamento':       0.015,  // 1,5%/mês — financiamento veículo/imóvel
-  'Água/Luz/Gás':        0.010,  // 1%/mês — concessionárias
-  'Aluguel':             0.010,  // 1%/mês — IGPM médio
-  'Outro':               0.060,  // 6%/mês — estimativa conservadora
+// ── Taxas fallback (BCB médias 2025/2026) usadas se API falhar ──
+const TAXAS_FALLBACK = {
+  'Cartão de crédito':  0.150,
+  'Cheque especial':    0.120,
+  'Empréstimo pessoal': 0.060,
+  'Financiamento':      0.015,
+  'Água/Luz/Gás':       0.010,
+  'Aluguel':            0.010,
+  'Outro':              0.060,
 };
 
-// Prazos de prescrição em meses por tipo (Código Civil)
+// Mapeamento tipo → código SGS do Banco Central
+// https://www3.bcb.gov.br/sgspub/
+const BCB_SERIES = {
+  'Cartão de crédito':  20541,  // Cartão rotativo total (% a.m.)
+  'Cheque especial':    20786,  // Cheque especial (% a.m.)
+  'Empréstimo pessoal': 20588,  // Empréstimo pessoal não consignado (% a.m.)
+  'Financiamento':      25466,  // Financiamento veículos (% a.m.)
+};
+// Água/Luz/Gás, Aluguel e Outro não têm série BCB — mantêm fallback
+
+// Taxa ativa (começa com fallback, atualizada pela API)
+let TAXAS_MENSAIS = { ...TAXAS_FALLBACK };
+let _taxasDataRef = null; // data da última atualização das taxas
+
 const PRESCRICAO_MESES = {
-  'Cartão de crédito':   60,   // 5 anos
-  'Cheque especial':     60,   // 5 anos
-  'Empréstimo pessoal':  60,   // 5 anos
-  'Financiamento':       120,  // 10 anos
-  'Água/Luz/Gás':        36,   // 3 anos
-  'Aluguel':             36,   // 3 anos
-  'Outro':               60,   // 5 anos (padrão CDC)
+  'Cartão de crédito':  60,
+  'Cheque especial':    60,
+  'Empréstimo pessoal': 60,
+  'Financiamento':      120,
+  'Água/Luz/Gás':       36,
+  'Aluguel':            36,
+  'Outro':              60,
 };
-
-// Faixa de desconto realista por tipo
 const DESCONTO_RANGE = {
-  'Cartão de crédito':   [0.40, 0.75],
-  'Cheque especial':     [0.35, 0.70],
-  'Empréstimo pessoal':  [0.30, 0.60],
-  'Financiamento':       [0.10, 0.30],
-  'Água/Luz/Gás':        [0.20, 0.50],
-  'Aluguel':             [0.15, 0.40],
-  'Outro':               [0.30, 0.60],
+  'Cartão de crédito':  [0.40, 0.75],
+  'Cheque especial':    [0.35, 0.70],
+  'Empréstimo pessoal': [0.30, 0.60],
+  'Financiamento':      [0.10, 0.30],
+  'Água/Luz/Gás':       [0.20, 0.50],
+  'Aluguel':            [0.15, 0.40],
+  'Outro':              [0.30, 0.60],
 };
 
-const pTipos = Object.keys(TAXAS_MENSAIS);
-const pStats  = ['Não iniciado','Em negociação','Acordo feito','Quitado'];
+const pTipos = Object.keys(TAXAS_FALLBACK);
 
-// ── Cálculo central ──
+// ══════════════════════════════════════════════════
+// ATUALIZAÇÃO DE TAXAS VIA API BCB (SGS)
+// ══════════════════════════════════════════════════
+
+async function n3AtualizarTaxas() {
+  const statusEl = document.getElementById('n3-taxas-status');
+  const badgeEl  = document.getElementById('n3-taxas-badge');
+  if (statusEl) statusEl.textContent = 'Consultando Banco Central...';
+
+  // Monta URL multi-série do BCB — retorna últimos valores de cada série
+  const codigos = Object.values(BCB_SERIES).join(',');
+  const url = `https://api.bcb.gov.br/dados/serie/bcdata.sgs.${Object.values(BCB_SERIES)[0]}/dados/ultimos/1?formato=json`;
+
+  try {
+    // Busca cada série individualmente (API SGS não suporta multi-série no path)
+    const tipos = Object.keys(BCB_SERIES);
+    const fetches = tipos.map(tipo => {
+      const serie = BCB_SERIES[tipo];
+      return fetch(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${serie}/dados/ultimos/1?formato=json`)
+        .then(r => r.ok ? r.json() : null)
+        .then(data => ({ tipo, data }))
+        .catch(() => ({ tipo, data: null }));
+    });
+
+    const results = await Promise.all(fetches);
+    let atualizou = false;
+    let dataRef = null;
+
+    results.forEach(({ tipo, data }) => {
+      if (data && data[0] && data[0].valor != null) {
+        const taxaMensal = parseFloat(data[0].valor) / 100; // vem em % ex: "15.3" → 0.153
+        TAXAS_MENSAIS[tipo] = taxaMensal;
+        if (!dataRef) dataRef = data[0].data; // "dd/MM/yyyy"
+        atualizou = true;
+      }
+    });
+
+    if (atualizou) {
+      _taxasDataRef = dataRef;
+      if (statusEl) statusEl.innerHTML =
+        `<span style="color:#4ade80">✓ Taxas atualizadas do BCB</span> <span style="color:var(--text3)">· Referência: ${dataRef}</span>`;
+      if (badgeEl) { badgeEl.style.background = 'rgba(74,222,128,0.15)'; badgeEl.style.borderColor = 'rgba(74,222,128,0.3)'; badgeEl.style.color = '#4ade80'; badgeEl.textContent = 'BCB AO VIVO'; }
+      // Atualiza texto de detalhes das taxas
+      const det = document.getElementById('n3-taxas-detalhe');
+      if (det) {
+        const fmt = t => (t * 100).toLocaleString('pt-BR', {minimumFractionDigits:1, maximumFractionDigits:2}) + '%/mês';
+        det.innerHTML =
+          `Cartão de crédito: <b style="color:#fb7185">${fmt(TAXAS_MENSAIS['Cartão de crédito'])}</b> · ` +
+          `Cheque especial: <b style="color:#fb7185">${fmt(TAXAS_MENSAIS['Cheque especial'])}</b> · ` +
+          `Empréstimo pessoal: <b style="color:#fbbf24">${fmt(TAXAS_MENSAIS['Empréstimo pessoal'])}</b> · ` +
+          `Financiamento: <b style="color:#4ade80">${fmt(TAXAS_MENSAIS['Financiamento'])}</b> · ` +
+          `Água/Luz/Gás: <b style="color:#4ade80">${fmt(TAXAS_MENSAIS['Água/Luz/Gás'])}</b> · ` +
+          `Aluguel: <b style="color:#4ade80">${fmt(TAXAS_MENSAIS['Aluguel'])}</b>`;
+      }
+      // Re-renderiza com taxas novas
+      if (n3Linhas.length > 0) n3RenderPlan();
+    } else {
+      throw new Error('sem dados');
+    }
+  } catch (e) {
+    if (statusEl) statusEl.innerHTML =
+      `<span style="color:#fbbf24">⚠ Usando taxas fixas (BCB indisponível)</span>`;
+    if (badgeEl) { badgeEl.style.color = '#fbbf24'; badgeEl.textContent = 'FIXAS'; }
+  }
+}
+const pStats = ['Não iniciado','Em negociação','Acordo feito','Quitado'];
+const STATUS_COLOR = {'Não iniciado':'#71717a','Em negociação':'#fbbf24','Acordo feito':'#60a5fa','Quitado':'#4ade80'};
+
+// ── Cálculo central (puro, sem side-effects) ──
 function calcDivida(l) {
   const orig   = parseFloat(l.valor) || 0;
   const meses  = parseInt(l.meses)   || 0;
   const taxa   = TAXAS_MENSAIS[l.tipo]  || 0.06;
   const prescM = PRESCRICAO_MESES[l.tipo] || 60;
   const [dMin, dMax] = DESCONTO_RANGE[l.tipo] || [0.30, 0.60];
-
-  // Valor corrigido com juros compostos
-  const corrigido = orig * Math.pow(1 + taxa, meses);
-
-  // Oferta ideal: média do range, arredondado
-  const ofertaMediaDesc = (dMin + dMax) / 2;
-  const ofertaIdeal     = corrigido * (1 - ofertaMediaDesc);
-  const ofertaMin       = corrigido * (1 - dMax);
-  const ofertaMax       = corrigido * (1 - dMin);
-
-  // Prescrição
-  const prescrita   = meses >= prescM;
-  const mesRestante = prescM - meses;
-  const proxima     = !prescrita && mesRestante <= 6; // alerta se prescreve em até 6 meses
-
-  // Score de prioridade (0-100): quanto maior, mais urgente negociar
+  const corrigido     = orig * Math.pow(1 + taxa, meses);
+  const ofertaIdeal   = corrigido * (1 - (dMin + dMax) / 2);
+  const ofertaMin     = corrigido * (1 - dMax);
+  const ofertaMax     = corrigido * (1 - dMin);
+  const prescrita     = meses >= prescM;
+  const mesRestante   = prescM - meses;
+  const proxima       = !prescrita && mesRestante <= 6;
   let score = 0;
   if (l.tipo === 'Cartão de crédito' || l.tipo === 'Cheque especial') score += 40;
   else if (l.tipo === 'Empréstimo pessoal') score += 25;
   else score += 10;
-  score += Math.min(meses * 2, 40); // mais tempo = mais urgente
-  if (proxima) score += 30;         // prestes a prescrever = muito urgente
-  if (prescrita) score = 15;        // prescrita = baixa urgência financeira
-
+  score += Math.min(meses * 2, 40);
+  if (proxima)   score += 30;
+  if (prescrita) score = 15;
   let prio, prioColor;
-  if (prescrita)    { prio = 'Prescrita'; prioColor = '#71717a'; }
+  if (prescrita)        { prio = 'Prescrita'; prioColor = '#71717a'; }
   else if (score >= 70) { prio = 'Urgente';   prioColor = '#fb7185'; }
   else if (score >= 40) { prio = 'Alta';      prioColor = '#fbbf24'; }
   else                  { prio = 'Média';     prioColor = '#4ade80'; }
-
   return { orig, meses, taxa, corrigido, ofertaIdeal, ofertaMin, ofertaMax,
            prescrita, proxima, mesRestante, prescM, prio, prioColor, score };
 }
 
-function fmtR(n) {
-  return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+function fmtR(n) { return 'R$\u00a0' + Math.round(n).toLocaleString('pt-BR'); }
+function _e(s)   { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ── Estado ──
+let n3Linhas  = [];
+let n3Filtro  = 'all';       // 'all'|'urgente'|'alta'|'quitado'
+let n3SortKey = 'prio';      // campo de ordenação
+let n3SortDir = -1;          // -1 desc | 1 asc
+let _n3SaveTimer = null;
+
+// ── Persistência com debounce ──
+function n3SaveStorage() {
+  clearTimeout(_n3SaveTimer);
+  _n3SaveTimer = setTimeout(() => {
+    try { localStorage.setItem('quita_plan_v2', JSON.stringify(n3Linhas)); } catch(e) {}
+  }, 300);
+}
+function n3LoadStorage() {
+  try { const d = localStorage.getItem('quita_plan_v2'); if (d) n3Linhas = JSON.parse(d); } catch(e) {}
 }
 
-// ── Persistência ──
-let n3Linhas = [];
-function n3SaveStorage(){ try{ localStorage.setItem('quita_plan_v2', JSON.stringify(n3Linhas)); }catch(e){} }
-function n3LoadStorage(){ try{ const d=localStorage.getItem('quita_plan_v2'); if(d) n3Linhas=JSON.parse(d); }catch(e){} }
-
-function n3AddLinha(){
-  n3Linhas.push({ id:Date.now(), credor:'', valor:'', tipo:'Cartão de crédito', meses:'', status:'Não iniciado' });
-  n3RenderPlan(); n3SaveStorage();
+// ── CRUD ──
+function n3AddLinha() {
+  const nova = { id: Date.now(), credor:'', valor:'', tipo:'Cartão de crédito', meses:'', status:'Não iniciado' };
+  n3Linhas.push(nova);
+  n3SaveStorage();
+  n3RenderPlan();
+  // Foca no input do credor da linha recém-criada
+  setTimeout(() => {
+    const inp = document.querySelector('[data-id="' + nova.id + '"][data-field="credor"]');
+    if (inp) inp.focus();
+  }, 50);
 }
-function n3DelLinha(id){ n3Linhas=n3Linhas.filter(l=>l.id!==id); n3RenderPlan(); n3SaveStorage(); }
-function n3UpdPlan(id,f,v){ const l=n3Linhas.find(l=>l.id===id); if(l){ l[f]=v; n3RenderPlan(); n3SaveStorage(); } }
 
-// ── Renderização ──
-function n3RenderPlan(){
-  const tb = document.getElementById('n3-ptbody');
-  if(!tb) return;
+function n3DelLinha(id) {
+  if (!confirm('Remover esta dívida?')) return;
+  n3Linhas = n3Linhas.filter(l => l.id !== id);
+  n3SaveStorage();
+  n3RenderPlan();
+}
 
-  const _e = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-
-  // Ordenar por score decrescente
-  const sorted = [...n3Linhas].sort((a,b)=>{
-    const ca = calcDivida(a), cb = calcDivida(b);
-    return cb.score - ca.score;
-  });
-
-  tb.innerHTML = sorted.map(l => {
-    const c = calcDivida(l);
-    const prescTxt = c.prescrita
-      ? '<span style="color:#71717a;font-weight:700">Prescrita</span>'
-      : c.proxima
-        ? `<span style="color:#fb7185;font-weight:700">⚠️ ${c.mesRestante}m restantes</span>`
-        : `<span style="color:var(--text3)">${c.mesRestante}m restantes</span>`;
-
-    return `<tr style="${l.status==='Quitado'?'opacity:0.4;text-decoration:line-through':''}">
-      <td><input value="${_e(l.credor)}" placeholder="Ex: Nubank"
-        oninput="n3UpdPlan(${l.id},'credor',this.value)"
-        style="width:100%;font-size:11px;padding:4px 6px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#ebebeb;font-family:var(--font-b);outline:none"></td>
-      <td><input type="number" value="${_e(l.valor)}" placeholder="0" min="0"
-        oninput="n3UpdPlan(${l.id},'valor',this.value)"
-        style="width:100%;font-size:11px;padding:4px 6px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#ebebeb;font-family:var(--font-b);outline:none"></td>
-      <td><select onchange="n3UpdPlan(${l.id},'tipo',this.value)"
-        style="width:100%;font-size:11px;padding:4px 5px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#ebebeb;font-family:var(--font-b);outline:none">
-        ${pTipos.map(t=>`<option${t===l.tipo?' selected':''}>${t}</option>`).join('')}
-      </select></td>
-      <td><input type="number" value="${_e(l.meses)}" placeholder="0" min="0" max="360"
-        oninput="n3UpdPlan(${l.id},'meses',this.value)"
-        style="width:100%;font-size:11px;padding:4px 6px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#ebebeb;font-family:var(--font-b);outline:none"></td>
-      <td style="color:#fbbf24;font-weight:700;font-size:12px">${c.orig>0?fmtR(c.corrigido):'—'}</td>
-      <td style="font-size:11px;color:#4ade80">
-        ${c.orig>0?`<div style="font-weight:700">${fmtR(c.ofertaIdeal)}</div><div style="color:var(--text3);font-size:10px">${fmtR(c.ofertaMin)}–${fmtR(c.ofertaMax)}</div>`:'—'}
-      </td>
-      <td style="font-size:11px">${prescTxt}</td>
-      <td><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:100px;background:${c.prioColor}22;color:${c.prioColor};border:1px solid ${c.prioColor}55">
-        ${c.prio}
-      </span></td>
-      <td><select onchange="n3UpdPlan(${l.id},'status',this.value)"
-        style="width:100%;font-size:11px;padding:4px 5px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#ebebeb;font-family:var(--font-b);outline:none">
-        ${pStats.map(s=>`<option${s===l.status?' selected':''}>${s}</option>`).join('')}
-      </select></td>
-      <td><button onclick="n3DelLinha(${l.id})"
-        style="background:none;border:1px solid rgba(251,113,133,0.2);border-radius:5px;color:#fb7185;font-size:11px;padding:3px 8px;cursor:pointer;font-family:var(--font-b)">✕</button></td>
-    </tr>`;
-  }).join('');
-
+function n3UpdField(id, field, value) {
+  const l = n3Linhas.find(l => l.id === id);
+  if (!l) return;
+  l[field] = value;
+  n3SaveStorage();
+  // Atualiza apenas as células calculadas dessa linha — sem re-render total
+  n3UpdateRowCalcs(id);
   n3CalcStats();
 }
 
-function n3CalcStats(){
-  const ativos = n3Linhas.filter(l=>l.status!=='Quitado');
-  const totOrig    = ativos.reduce((s,l)=>s+(parseFloat(l.valor)||0),0);
-  const totCorr    = ativos.reduce((s,l)=>s+calcDivida(l).corrigido,0);
-  const totOferta  = ativos.reduce((s,l)=>s+calcDivida(l).ofertaIdeal,0);
-  const econ       = totCorr - totOferta;
-  const urgentes   = ativos.filter(l=>calcDivida(l).prio==='Urgente'||calcDivida(l).prio==='Alta').length;
-
-  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  set('n3-qtd',    n3Linhas.length);
-  set('n3-tot',    totOrig>0 ? fmtR(totOrig) : 'R$ 0');
-  set('n3-tot-corr', totCorr>0 ? fmtR(totCorr) : 'R$ 0');
-  set('n3-econ',   econ>0 ? fmtR(econ) : 'R$ 0');
-  set('n3-alta',   urgentes);
+function n3LimparTudo() {
+  if (!confirm('Apagar TODAS as dívidas? Esta ação não pode ser desfeita.')) return;
+  n3Linhas = [];
+  n3SaveStorage();
+  n3RenderPlan();
 }
 
-// ── Exportar CSV ──
-function n3ExportCSV(){
-  const headers = ['Credor','Valor original','Tipo','Meses atraso','Valor corrigido','Oferta ideal','Desconto %','Prescrição','Prioridade','Status'];
-  const rows = n3Linhas.map(l=>{
-    const c = calcDivida(l);
-    const descPct = c.orig>0 ? Math.round((1-c.ofertaIdeal/c.corrigido)*100)+'%' : '-';
-    const presc   = c.prescrita ? 'Prescrita' : c.mesRestante+'m restantes';
-    return [l.credor,l.valor,l.tipo,l.meses,
-      c.orig>0?Math.round(c.corrigido):'',
-      c.orig>0?Math.round(c.ofertaIdeal):'',
-      descPct, presc, c.prio, l.status].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',');
+// ── Filtro ──
+function n3SetFiltro(f) {
+  n3Filtro = f;
+  // Atualiza botões de filtro
+  ['all','urgente','alta','quitado'].forEach(k => {
+    const btn = document.getElementById('pf-' + k);
+    if (btn) btn.style.background = k === f ? '#1f1f22' : 'none';
   });
-  const csv = '\uFEFF' + [headers.join(','),...rows].join('\n');
-  const a   = document.createElement('a');
-  a.href    = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-  a.download= 'QUITA_planilha_dividas.csv';
+  n3RenderPlan();
+}
+
+// ── Ordenação ──
+function n3Sort(key) {
+  if (n3SortKey === key) { n3SortDir *= -1; }
+  else { n3SortKey = key; n3SortDir = -1; }
+  // Atualiza indicadores visuais
+  ['credor','valor','meses','corrigido','prio'].forEach(k => {
+    const el = document.getElementById('ns-' + k);
+    if (el) el.textContent = k === key ? (n3SortDir === -1 ? ' ↓' : ' ↑') : '';
+  });
+  n3RenderPlan();
+}
+
+function n3GetSorted() {
+  let rows = [...n3Linhas];
+  // Filtro
+  if (n3Filtro === 'urgente') rows = rows.filter(l => calcDivida(l).prio === 'Urgente');
+  else if (n3Filtro === 'alta') rows = rows.filter(l => calcDivida(l).prio === 'Alta' || calcDivida(l).prio === 'Urgente');
+  else if (n3Filtro === 'quitado') rows = rows.filter(l => l.status === 'Quitado');
+  // Ordenação
+  rows.sort((a, b) => {
+    const ca = calcDivida(a), cb = calcDivida(b);
+    let va, vb;
+    if (n3SortKey === 'credor')    { va = (a.credor||'').toLowerCase(); vb = (b.credor||'').toLowerCase(); return va < vb ? -n3SortDir : va > vb ? n3SortDir : 0; }
+    if (n3SortKey === 'valor')     { va = parseFloat(a.valor)||0; vb = parseFloat(b.valor)||0; }
+    else if (n3SortKey === 'meses')    { va = parseInt(a.meses)||0; vb = parseInt(b.meses)||0; }
+    else if (n3SortKey === 'corrigido') { va = ca.corrigido; vb = cb.corrigido; }
+    else { va = ca.score; vb = cb.score; }
+    return (va - vb) * n3SortDir;
+  });
+  return rows;
+}
+
+// ── Renderização INTELIGENTE — só re-renderiza quando necessário ──
+function n3RenderPlan() {
+  const tb = document.getElementById('n3-ptbody');
+  if (!tb) return;
+  const rows = n3GetSorted();
+  const empty = document.getElementById('n3-empty');
+  const totalRow = document.getElementById('n3-total-row');
+  if (empty) empty.style.display = rows.length === 0 ? 'block' : 'none';
+  if (totalRow) totalRow.style.display = rows.length > 0 ? 'grid' : 'none';
+
+  tb.innerHTML = rows.map(l => n3RowHTML(l)).join('');
+  n3CalcStats();
+}
+
+function n3RowHTML(l) {
+  const c = calcDivida(l);
+  const isQuit = l.status === 'Quitado';
+  const prescTxt = c.prescrita
+    ? '<span style="color:#71717a;font-size:11px;font-weight:600">Prescrita</span>'
+    : c.proxima
+      ? `<span style="color:#fb7185;font-size:11px;font-weight:700">⚠ ${c.mesRestante}m</span>`
+      : `<span style="color:var(--text3);font-size:11px">${c.mesRestante}m</span>`;
+  const descPct = c.orig > 0 ? Math.round((1 - c.ofertaIdeal / c.corrigido) * 100) : 0;
+
+  const rowStyle = isQuit
+    ? 'opacity:0.45;'
+    : c.prio === 'Urgente' ? 'border-left:2px solid #fb718566;' : '';
+
+  return `<div data-row="${l.id}" style="display:grid;grid-template-columns:1.8fr 1.1fr 1.5fr .8fr 1.2fr 1.2fr 1.1fr 1fr 1.2fr 56px;padding:0 8px;border-bottom:1px solid rgba(255,255,255,0.05);transition:background .15s;${rowStyle}"
+    onmouseover="this.style.background='rgba(255,255,255,0.025)'" onmouseout="this.style.background='transparent'">
+    <div style="padding:8px 6px;display:flex;align-items:center">
+      <input data-id="${l.id}" data-field="credor" value="${_e(l.credor)}" placeholder="Ex: Nubank"
+        onchange="n3UpdField(${l.id},'credor',this.value)"
+        style="width:100%;font-size:12px;padding:5px 8px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.08);border-radius:7px;color:#ebebeb;font-family:var(--font-b);outline:none;transition:border-color .15s"
+        onfocus="this.style.borderColor='rgba(245,166,35,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+    </div>
+    <div style="padding:8px 6px;display:flex;align-items:center">
+      <input data-id="${l.id}" data-field="valor" type="number" value="${_e(l.valor)}" placeholder="0" min="0"
+        onchange="n3UpdField(${l.id},'valor',this.value)"
+        style="width:100%;font-size:12px;padding:5px 8px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.08);border-radius:7px;color:#fb7185;font-family:var(--font-b);outline:none;transition:border-color .15s"
+        onfocus="this.style.borderColor='rgba(245,166,35,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+    </div>
+    <div style="padding:8px 6px;display:flex;align-items:center">
+      <select data-id="${l.id}" data-field="tipo" onchange="n3UpdField(${l.id},'tipo',this.value)"
+        style="width:100%;font-size:11px;padding:5px 6px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.08);border-radius:7px;color:#ebebeb;font-family:var(--font-b);outline:none">
+        ${pTipos.map(t => `<option${t===l.tipo?' selected':''}>${t}</option>`).join('')}
+      </select>
+    </div>
+    <div style="padding:8px 6px;display:flex;align-items:center">
+      <input data-id="${l.id}" data-field="meses" type="number" value="${_e(l.meses)}" placeholder="0" min="0" max="360"
+        onchange="n3UpdField(${l.id},'meses',this.value)"
+        style="width:100%;font-size:12px;padding:5px 8px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.08);border-radius:7px;color:#ebebeb;font-family:var(--font-b);outline:none;transition:border-color .15s"
+        onfocus="this.style.borderColor='rgba(245,166,35,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+    </div>
+    <div data-calc="${l.id}-corr" style="padding:8px 6px;display:flex;flex-direction:column;justify-content:center">
+      ${c.orig > 0 ? `<span style="font-size:12px;font-weight:700;color:#fbbf24">${fmtR(c.corrigido)}</span>
+      <span style="font-size:10px;color:var(--text3);margin-top:1px">+${Math.round((c.corrigido/c.orig-1)*100)}% juros</span>` : '<span style="color:var(--text3)">—</span>'}
+    </div>
+    <div data-calc="${l.id}-oferta" style="padding:8px 6px;display:flex;flex-direction:column;justify-content:center">
+      ${c.orig > 0 ? `<span style="font-size:12px;font-weight:700;color:#4ade80">${fmtR(c.ofertaIdeal)}</span>
+      <span style="font-size:10px;color:var(--text3);margin-top:1px">${descPct}% desc · ${fmtR(c.ofertaMin)}–${fmtR(c.ofertaMax)}</span>` : '<span style="color:var(--text3)">—</span>'}
+    </div>
+    <div style="padding:8px 6px;display:flex;align-items:center">${prescTxt}</div>
+    <div style="padding:8px 6px;display:flex;align-items:center">
+      <span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;background:${c.prioColor}1a;color:${c.prioColor};border:1px solid ${c.prioColor}44;white-space:nowrap">
+        ${c.prio === 'Urgente' ? '🔴' : c.prio === 'Alta' ? '🟡' : c.prio === 'Prescrita' ? '⚪' : '🟢'} ${c.prio}
+      </span>
+    </div>
+    <div style="padding:8px 6px;display:flex;align-items:center">
+      <select data-id="${l.id}" data-field="status" onchange="n3UpdField(${l.id},'status',this.value)"
+        style="width:100%;font-size:11px;padding:5px 6px;background:#1a1a1e;border:1px solid rgba(255,255,255,0.08);border-radius:7px;color:${STATUS_COLOR[l.status]||'#ebebeb'};font-family:var(--font-b);outline:none">
+        ${pStats.map(s => `<option${s===l.status?' selected':''}>${s}</option>`).join('')}
+      </select>
+    </div>
+    <div style="padding:8px 6px;display:flex;align-items:center;justify-content:center">
+      <button onclick="n3DelLinha(${l.id})" title="Remover"
+        style="width:28px;height:28px;background:none;border:1px solid rgba(251,113,133,0.15);border-radius:6px;color:rgba(251,113,133,0.5);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s"
+        onmouseover="this.style.background='rgba(251,113,133,0.12)';this.style.color='#fb7185';this.style.borderColor='rgba(251,113,133,0.4)'"
+        onmouseout="this.style.background='none';this.style.color='rgba(251,113,133,0.5)';this.style.borderColor='rgba(251,113,133,0.15)'">✕</button>
+    </div>
+  </div>`;
+}
+
+// Atualiza só as células de cálculo de uma linha (sem re-render completo)
+function n3UpdateRowCalcs(id) {
+  const l = n3Linhas.find(l => l.id === id);
+  if (!l) return;
+  const c = calcDivida(l);
+  const descPct = c.orig > 0 ? Math.round((1 - c.ofertaIdeal / c.corrigido) * 100) : 0;
+  const corrEl   = document.querySelector('[data-calc="' + id + '-corr"]');
+  const ofertaEl = document.querySelector('[data-calc="' + id + '-oferta"]');
+  if (corrEl) corrEl.innerHTML = c.orig > 0
+    ? `<span style="font-size:12px;font-weight:700;color:#fbbf24">${fmtR(c.corrigido)}</span>
+       <span style="font-size:10px;color:var(--text3);margin-top:1px">+${Math.round((c.corrigido/c.orig-1)*100)}% juros</span>`
+    : '<span style="color:var(--text3)">—</span>';
+  if (ofertaEl) ofertaEl.innerHTML = c.orig > 0
+    ? `<span style="font-size:12px;font-weight:700;color:#4ade80">${fmtR(c.ofertaIdeal)}</span>
+       <span style="font-size:10px;color:var(--text3);margin-top:1px">${descPct}% desc · ${fmtR(c.ofertaMin)}–${fmtR(c.ofertaMax)}</span>`
+    : '<span style="color:var(--text3)">—</span>';
+}
+
+// ── Stats & KPIs ──
+function n3CalcStats() {
+  const ativos   = n3Linhas.filter(l => l.status !== 'Quitado');
+  const quitados = n3Linhas.filter(l => l.status === 'Quitado');
+  const totOrig  = ativos.reduce((s, l) => s + (parseFloat(l.valor) || 0), 0);
+  const totCorr  = ativos.reduce((s, l) => s + calcDivida(l).corrigido, 0);
+  const totOferta= ativos.reduce((s, l) => s + calcDivida(l).ofertaIdeal, 0);
+  const econ     = totCorr - totOferta;
+  const urgentes = ativos.filter(l => { const p = calcDivida(l).prio; return p === 'Urgente' || p === 'Alta'; }).length;
+  const jurosAcum = totOrig > 0 ? Math.round((totCorr / totOrig - 1) * 100) : 0;
+
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const setHTML = (id, v) => { const el = document.getElementById(id); if (el) el.innerHTML = v; };
+
+  set('n3-qtd',      n3Linhas.length);
+  set('n3-qtd-sub',  n3Linhas.length === 1 ? '— cadastrada' : '— cadastradas');
+  set('n3-tot',      totOrig > 0 ? fmtR(totOrig) : 'R$\u00a00');
+  set('n3-tot-corr', totCorr > 0 ? fmtR(totCorr) : 'R$\u00a00');
+  set('n3-juros-sub', jurosAcum > 0 ? `+${jurosAcum}% de juros acumulados` : 'com juros acumulados');
+  set('n3-oferta',   totOferta > 0 ? fmtR(totOferta) : 'R$\u00a00');
+  set('n3-econ',     econ > 0 ? `economia: ${fmtR(econ)}` : 'economia potencial');
+  set('n3-alta',     urgentes);
+
+  // Rodapé da tabela
+  set('n3-foot-corr',   totCorr > 0 ? fmtR(totCorr) : '');
+  set('n3-foot-oferta', totOferta > 0 ? fmtR(totOferta) : '');
+
+  // Barra de progresso
+  const progWrap = document.getElementById('n3-progresso-wrap');
+  if (progWrap && n3Linhas.length > 0) {
+    progWrap.style.display = 'block';
+    const pct = Math.round(quitados.length / n3Linhas.length * 100);
+    const bar = document.getElementById('n3-prog-bar');
+    const pctEl = document.getElementById('n3-prog-pct');
+    if (bar) bar.style.width = pct + '%';
+    if (pctEl) pctEl.textContent = pct + '%';
+    set('n3-prog-quit', quitados.length + ' quitada' + (quitados.length !== 1 ? 's' : ''));
+    set('n3-prog-rest', ativos.length + ' ativa' + (ativos.length !== 1 ? 's' : ''));
+  } else if (progWrap) {
+    progWrap.style.display = 'none';
+  }
+}
+
+// ── Exportar CSV aprimorado ──
+function n3ExportCSV() {
+  if (n3Linhas.length === 0) { alert('Nenhuma dívida para exportar.'); return; }
+  const headers = ['Credor','Valor original (R$)','Tipo','Meses atraso','Valor corrigido (R$)','Oferta ideal (R$)','Oferta mín (R$)','Oferta máx (R$)','Desconto %','Prescrição','Prioridade','Status'];
+  const rows = n3Linhas.map(l => {
+    const c = calcDivida(l);
+    const descPct = c.orig > 0 ? Math.round((1 - c.ofertaIdeal / c.corrigido) * 100) + '%' : '-';
+    const presc   = c.prescrita ? 'Prescrita' : c.mesRestante + 'm restantes';
+    return [
+      l.credor, l.valor, l.tipo, l.meses,
+      c.orig > 0 ? Math.round(c.corrigido) : '',
+      c.orig > 0 ? Math.round(c.ofertaIdeal) : '',
+      c.orig > 0 ? Math.round(c.ofertaMin) : '',
+      c.orig > 0 ? Math.round(c.ofertaMax) : '',
+      descPct, presc, c.prio, l.status
+    ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',');
+  });
+  const csv = '\uFEFF' + [headers.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'QUITA_planilha_dividas_' + new Date().toISOString().slice(0,10) + '.csv';
   a.click();
 }
 
@@ -1512,28 +2261,18 @@ function toggleMobNav(){
   if(overlay) overlay.classList.toggle('active');
 }
 
-
-// ── MOBILE MENU ──
-function toggleMobNav(){
-  const nav = document.getElementById('mob-nav');
-  const overlay = document.getElementById('mob-overlay');
-  if(nav) nav.classList.toggle('mob-open');
-  if(overlay) overlay.classList.toggle('active');
-}
-
 // Shake animation
 const shakeStyle=document.createElement('style');
 shakeStyle.textContent='@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}.shake{animation:shake .3s ease}';
 document.head.appendChild(shakeStyle);
 
 function logout(){
-  sessionStorage.removeItem('quita_auth');
-  document.getElementById('app-aluno').style.display='none';
-  document.getElementById('app-aluno').innerHTML='';
-  const tela=document.getElementById('tela-senha');
-  tela.style.display='flex'; tela.style.opacity='1';
-  document.getElementById('senha-input').value='';
-  document.getElementById('senha-erro').style.display='none';
+  const app = document.getElementById('app-aluno');
+  if (app) { app.style.display = 'none'; app.innerHTML = ''; }
+  const ls = document.getElementById('login-screen');
+  if (ls) { ls.style.display = 'flex'; ls.style.opacity = '1'; }
+  const inp = document.getElementById('login-input');
+  if (inp) inp.value = '';
 }
 
 // ── PASSWORD SCREEN LOGIC ──
@@ -1543,66 +2282,73 @@ function logout(){
 // onde X = letra maiúscula (A-Z) ou número (0-9)
 // ═══════════════════════════════════════
 
-const PADRAO_SENHA = /^QUITA-[A-Z0-9]{6}-[A-Z0-9]{6}$/;
 
-let tentativas = 0;
+// ══════════════════════════════════════════
+// SISTEMA DE LOGIN — VALIDAÇÃO POR PADRÃO
+// Formato válido: QUITA-XXXXXX-XXXXXX
+// X = A-Z ou 0-9 (maiúsculo)
+// ══════════════════════════════════════════
 
-function verificarSenha(){
-  if(tentativas >= 5){
-    document.getElementById('senha-erro').textContent = '⏳ Muitas tentativas. Aguarde 30 segundos.';
-    document.getElementById('senha-erro').style.display = 'block';
+const SENHA_PATTERN = /^QUITA-[A-Z0-9]{6}-[A-Z0-9]{6}$/;
+
+// Senhas revogadas (bloqueadas pelo admin) — armazenadas em localStorage
+function getSenhasRevogadas() {
+  try { return JSON.parse(localStorage.getItem('quita_revogadas') || '[]'); } catch(e) { return []; }
+}
+
+function tentarLogin() {
+  const input = document.getElementById('login-input');
+  const erro  = document.getElementById('login-erro');
+  const senha = (input.value || '').trim().toUpperCase();
+
+  // Validação de formato
+  if (!SENHA_PATTERN.test(senha)) {
+    mostrarErroLogin(input, erro, 'Formato inválido. Use: QUITA-XXXXXX-XXXXXX');
     return;
   }
-  
-  const val = document.getElementById('senha-input').value.trim().toUpperCase();
-  
-  if(PADRAO_SENHA.test(val)){
-    sessionStorage.setItem('quita_auth', '1');
-    sessionStorage.setItem('quita_senha', val);
-    
-    const tela = document.getElementById('tela-senha');
-    tela.style.transition = 'opacity .4s'; 
-    tela.style.opacity = '0';
-    setTimeout(()=>{ 
-      tela.style.display = 'none'; 
-      abrirApp(3); 
-    }, 400);
-  } else {
-    tentativas++;
-    const err = document.getElementById('senha-erro');
-    err.textContent = '❌ Senha inválida. Verifique o e-mail recebido após a compra.';
-    err.style.display = 'block';
-    const inp = document.getElementById('senha-input');
-    inp.style.borderColor = 'rgba(251,113,133,0.5)'; 
-    inp.value = '';
-    inp.classList.add('shake');
-    setTimeout(()=>{ 
-      inp.classList.remove('shake'); 
-      inp.style.borderColor = 'rgba(255,255,255,0.08)'; 
-    }, 400);
-    if(tentativas >= 5) setTimeout(()=>{ 
-      tentativas = 0; 
-      err.style.display = 'none'; 
-    }, 30000);
+
+  // Verifica se foi revogada
+  if (getSenhasRevogadas().includes(senha)) {
+    mostrarErroLogin(input, erro, 'Esta senha foi cancelada. Contate o suporte.');
+    return;
   }
+
+  // Senha válida — abre o app
+  erro.style.display = 'none';
+  const loginScreen = document.getElementById('login-screen');
+  if (loginScreen) {
+    loginScreen.style.opacity = '0';
+    loginScreen.style.transition = 'opacity .3s ease';
+    setTimeout(() => { loginScreen.style.display = 'none'; }, 300);
+  }
+  const app = document.getElementById('app-aluno');
+  app.style.display = 'flex';
+  app.innerHTML = gerarNivel(3);
+  app.scrollTo(0, 0);
+  initN3();
 }
 
-function toggleSenhaVis(){
-  const inp=document.getElementById('senha-input');
-  const icon=document.getElementById('eye-icon');
-  if(inp.type==='password'){
-    inp.type='text'; inp.style.letterSpacing='0';
-    icon.innerHTML='<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
-  } else {
-    inp.type='password'; inp.style.letterSpacing='2px';
-    icon.innerHTML='<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
-  }
+function mostrarErroLogin(input, erroEl, msg) {
+  erroEl.textContent = msg;
+  erroEl.style.display = 'block';
+  input.style.borderColor = 'rgba(251,113,133,0.6)';
+  input.classList.add('shake');
+  setTimeout(() => { input.classList.remove('shake'); input.style.borderColor = ''; }, 500);
 }
 
-if(sessionStorage.getItem('quita_auth')==='1'){
-  document.getElementById('tela-senha').style.display='none';
-  abrirApp(3);
-}
+// Autodetecta senha na URL (vinda do obrigado.html via ?s=QUITA-...)
+document.addEventListener("DOMContentLoaded", function() {
+  const params = new URLSearchParams(window.location.search);
+  const senhaUrl = params.get('s');
+  if (senhaUrl) {
+    const input = document.getElementById('login-input');
+    if (input) {
+      input.value = senhaUrl.toUpperCase();
+      // Pequeno delay para a UI renderizar antes de tentar
+      setTimeout(tentarLogin, 200);
+    }
+  }
+});
 </script>
 </body>
 </html>
